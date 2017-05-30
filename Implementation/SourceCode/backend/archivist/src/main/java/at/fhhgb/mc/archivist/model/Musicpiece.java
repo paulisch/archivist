@@ -10,25 +10,30 @@ import java.util.List;
  * 
  */
 @Entity
+@Table(name="musicpiece")
 @NamedQuery(name="Musicpiece.findAll", query="SELECT m FROM Musicpiece m")
 public class Musicpiece implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(unique=true, nullable=false)
 	private int musicPieceId;
 
+	@Column(length=45)
 	private String archiveNo;
 
+	@Column(length=45)
 	private String composer;
 
 	private int difficulty;
 
+	@Column(nullable=false, length=45)
 	private String musicPieceName;
 
 	//bi-directional many-to-one association to Genre
 	@ManyToOne
-	@JoinColumn(name="GenreId")
+	@JoinColumn(name="GenreId", nullable=false)
 	private Genre genre;
 
 	//bi-directional many-to-one association to Score

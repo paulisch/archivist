@@ -10,14 +10,17 @@ import java.util.List;
  * 
  */
 @Entity
+@Table(name="genre")
 @NamedQuery(name="Genre.findAll", query="SELECT g FROM Genre g")
 public class Genre implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(unique=true, nullable=false)
 	private int genreId;
 
+	@Column(nullable=false, length=45)
 	private String genreName;
 
 	//bi-directional many-to-one association to Genre

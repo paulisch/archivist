@@ -9,24 +9,27 @@ import javax.persistence.*;
  * 
  */
 @Entity
+@Table(name="score")
 @NamedQuery(name="Score.findAll", query="SELECT s FROM Score s")
 public class Score implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(unique=true, nullable=false)
 	private int scoreId;
 
+	@Column(nullable=false, length=45)
 	private String fileName;
 
 	//bi-directional many-to-one association to Instrument
 	@ManyToOne
-	@JoinColumn(name="InstrumentId")
+	@JoinColumn(name="InstrumentId", nullable=false)
 	private Instrument instrument;
 
 	//bi-directional many-to-one association to Musicpiece
 	@ManyToOne
-	@JoinColumn(name="MusicPieceId")
+	@JoinColumn(name="MusicPieceId", nullable=false)
 	private Musicpiece musicpiece;
 
 	public Score() {

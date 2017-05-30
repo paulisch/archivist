@@ -1,6 +1,7 @@
 package at.fhhgb.mc.archivist;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,23 +21,16 @@ public class HelloController {
 	
 	@RequestMapping("/hello/{name}")
 	public String hello(@PathVariable String name) {
-		Genre g = new Genre();
-		g.setGenreName("Jazz");
-		
-		Musicpiece p = new Musicpiece();
-		p.setMusicPieceName(name);
-		p.setGenre(g);
-		
-		repository.save(p);
-		
-		return name + " created!";
+		return name + ", hello!";
 	}
 	
-	@RequestMapping("/getmusicpieces")
-	public List<String> getMusicPieces() {
-		ArrayList<String> list = new ArrayList<>();
-		list.add("Zigeunermarsch");
-		list.add("Radetzky Marsch");
-		return list;
+	@RequestMapping("/getall")
+	public List<Musicpiece> getMusicPieces() {
+		List<Musicpiece> result = new ArrayList<>();
+		Iterator it = repository.findAll().iterator();
+		while (it.hasNext()) {
+			result.add((Musicpiece) it.next());
+		}
+		return result;
 	}
 } 
