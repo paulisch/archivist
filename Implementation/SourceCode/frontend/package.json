@@ -15,5 +15,14 @@
   "bugs": {
     "url": "https://github.com/paulisch/archivist/issues"
   },
-  "homepage": "https://github.com/paulisch/archivist#readme"
+  "homepage": "https://github.com/paulisch/archivist#readme",
+  "dependencies": {
+    "bower": "^1.8.0",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-connect": "^5.0.0",
+    "gulp-jshint": "^2.0.4",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-uglify": "^3.0.0"
+  }
 }

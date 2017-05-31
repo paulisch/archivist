@@ -4,15 +4,24 @@
   "main": "gulpfile.js",
   "authors": [
     "Boris Fuchs",
-	"Paul Schmutz"
+    "Paul Schmutz"
   ],
   "license": "ISC",
   "homepage": "https://github.com/paulisch/archivist",
   "ignore": [
     "**/.*",
     "node_modules",
-    "bower_components",
+    "app/bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "angular": "^1.6.4",
+    "angular-animate": "^1.6.4",
+    "angular-route": "^1.6.4",
+    "jquery": "^3.2.1",
+    "animate.css": "^3.5.2",
+    "bootstrap": "^3.3.7",
+    "font-awesome": "fontawesome#^4.7.0"
+  }
 }
