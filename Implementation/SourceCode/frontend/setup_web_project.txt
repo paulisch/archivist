@@ -1,0 +1,88 @@
+Node.js installieren (NPM)
+
+Gulp installieren (Automatisierungstool für sich wiederholende Tasks):
+  npm install --global gulp-cli
+
+  
+  
+Bower installieren (Verwaltung von Frameworks und Libraries sowie Aktuellhaltung):
+  npm install -g bower
+
+  
+  
+NPM-init im Projektverzeichnis:
+  npm init
+    name: archivist
+    entry point: gulpfile.js
+    git repository: https://github.com/paulisch/archivist.git
+    author: archivist
+package.json
+{
+  "name": "archivist",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paulisch/archivist.git"
+  },
+  "author": "archivist",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/paulisch/archivist/issues"
+  },
+  "homepage": "https://github.com/paulisch/archivist#readme"
+}
+
+
+
+Bower-init:
+  bower init
+bower.json
+{
+  "name": "archivist",
+  "description": "",
+  "main": "gulpfile.js",
+  "authors": [
+    "Boris Fuchs",
+	"Paul Schmutz"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/paulisch/archivist",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "app/bower_components",
+    "test",
+    "tests"
+  ]
+}
+
+
+
+Install global dependencies:
+npm install -g gulp bower
+
+
+
+.bowerrc file anlegen mit Inhalt:
+{
+  "directory": "app/bower_components"
+}
+
+
+
+Local dependencies NPM:
+npm install gulp bower gulp-clean gulp-jshint gulp-uglify gulp-minify-css gulp-connect --save
+
+
+
+
+Local dependencies Bower:
+bower install angular angular-animate angular-route jquery animate.css bootstrap fontawesome --save
+
+
+
