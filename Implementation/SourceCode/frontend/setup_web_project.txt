@@ -55,7 +55,7 @@ bower.json
   "ignore": [
     "**/.*",
     "node_modules",
-    "app/bower_components",
+    "bower_components",
     "test",
     "tests"
   ]
@@ -68,21 +68,20 @@ npm install -g gulp bower
 
 
 
-.bowerrc file anlegen mit Inhalt:
-{
-  "directory": "app/bower_components"
-}
-
-
-
 Local dependencies NPM:
-npm install gulp bower gulp-clean gulp-jshint gulp-uglify gulp-minify-css gulp-connect --save
+npm install --> installs all dependencies defined in package.json
 
 
 
 
 Local dependencies Bower:
 bower install angular angular-animate angular-route jquery animate.css bootstrap fontawesome --save
+bower install --> installs all dependencies defined in bower.json
+
+
+
+Setup folder structure
+
 
 
 
