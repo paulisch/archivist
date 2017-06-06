@@ -1,8 +1,10 @@
 package at.fhhgb.mc.archivist;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,12 +27,42 @@ public class HelloController {
 	}
 	
 	@RequestMapping("/getall")
-	public List<Musicpiece> getMusicPieces() {
-		List<Musicpiece> result = new ArrayList<>();
-		Iterator it = repository.findAll().iterator();
-		while (it.hasNext()) {
-			result.add((Musicpiece) it.next());
+	public List<Map<String, String>> getMusicPieces() {
+		
+		List<Map<String, String>> musicPieces=new ArrayList<>();		
+		
+		Iterator it = repository.findAll().iterator(); //Fetch data from database
+		while (it.hasNext()) { //Iterate over result
+			Musicpiece p = (Musicpiece) it.next();
+			
+			Map<String, String> obj = new HashMap<String, String>();
+			obj.put("id", Integer.toString(p.getMusicPieceId()));
+			obj.put("name", p.getMusicPieceName());
+			obj.put("composer", p.getComposer());
+			
+			musicPieces.add(obj);
 		}
-		return result;
+		
+//		Map<String, String> obj = new HashMap<String, String>();
+//		obj.put("id", Integer.toString(1));
+//		obj.put("name", "asdf");
+//		obj.put("name", "bsdf");
+//		
+//		musicPieces.add(obj);
+		
+		return musicPieces;
 	}
+	
+	@RequestMapping("/remove")
+	public boolean remove (int id) {
+		
+		repository.findOne(id);
+		
+		repository.delete(id);
+		return true;
+	}
+	
+	
+	
+	
 } 
