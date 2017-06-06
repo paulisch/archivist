@@ -22,11 +22,19 @@ var paths = {
 	sass: 'app/**/*.scss',
     index: 'app/index.html',
     html: 'app/**/*.html',
-    js: 'app/**/*.js',
+    js: ['app/**/*.mod.js', 'app/**/*!(.mod).js'],
     images: 'app/img/**',
     jsDependencies: [
-      'bower_components/jquery/dist/jquery.js',
-      'bower_components/angular/angular.js'
+	  'bower_components/angular/angular.js',
+      'bower_components/jquery/dist/jquery.js',      
+	  'bower_components/angular-animate/angular-animate.js',
+	  'bower_components/angular-route/angular-route.js',
+	  'bower_components/angular-ui-router/release/angular-ui-router.js',
+	  'bower_components/bootstrap/dist/js/bootstrap.js'
+    ],
+    fontDependencies: [
+	  'bower_components/font-awesome/fonts/**',
+	  'bower_components/bootstrap/fonts/**'
     ]
   },
   build: {
@@ -34,7 +42,8 @@ var paths = {
     main: 'dist/',
     css: 'dist/css',
     js: 'dist/js',
-    images: 'dist/img'
+    images: 'dist/img',
+	fonts: 'dist/fonts'
   }
 };
 
@@ -87,11 +96,16 @@ gulp.task('images', function() {
 
 
 gulp.task('js', function() {
-	gulp.src(paths.dev.js)
+  gulp.src(paths.dev.js)
     .pipe(ngAnnotate())
     .pipe(uglify())
     .pipe(concat('app.min.js'))
     .pipe(gulp.dest(paths.build.js));
+});
+
+gulp.task('fonts', function() {
+  gulp.src(paths.dev.fontDependencies)
+    .pipe(gulp.dest(paths.build.fonts));
 });
 
 gulp.task('jsDependencies', function () {
@@ -131,6 +145,6 @@ gulp.task('bower-update', function () {
   return bower({cmd: 'update'});
 });
 
-gulp.task('build', sequence('clean', 'bower-install', ['jsDependencies', 'images', 'styles', 'js', 'index', 'html'], 'lint'));
+gulp.task('build', sequence('clean', 'bower-install', ['jsDependencies', 'images', 'styles', 'js', 'index', 'html', 'fonts'], 'lint'));
 gulp.task('run', sequence('build', 'webserver', 'watch'));
 gulp.task('default', ['run']);
