@@ -1,0 +1,21 @@
+<div class="container-fluid header">
+    <div class="row headerRow">
+        <div class="logoContainer">
+           <img ng-src="/img/logo.png">
+        </div>
+        <div class="appTitleContainer">
+            <p class="appTitle">Archivist</p>
+            
+            <div class="organisationTitle">
+                <span ng-show="!editMode" ng-click="edit()">
+                    <span ng-bind="orgName"></span><button ng-click="saveOrgName(orgName)" type="submit" class="iconButton edit"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                </span>
+                
+                <form ng-show="editMode">
+                    <input ng-model="orgName" id="orgNameInp" class="orgNameInput">
+                    <button ng-click="saveOrgName(orgName)" type="submit" class="iconButton"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
