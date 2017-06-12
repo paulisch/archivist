@@ -1,0 +1,42 @@
+@import 'main';
+
+.actionbar {
+    /*Border:*/
+    border-color: $grey;
+    border-style: solid;
+    border-width: 1px 0px 1px 0px;
+    margin: 0px auto;
+    padding: 12px;
+    
+    h1 {
+        color: $dark-grey;
+        margin: 0 12px;
+        padding: 0;
+    }
+    
+    button {
+        margin-right: 4px;
+        margin-left: 4px;
+        
+        i {
+            margin: 0;
+            padding: 0;
+            font-size: 28px;
+        }
+    }
+    button:last-child {
+        margin-right: 16px;
+    }
+    
+    .titleContainer {
+        display: table-cell;
+        vertical-align: middle;
+    }
+    
+    .actionContainer {
+        width: 100%;
+        display: table-cell;
+        vertical-align: middle;
+        text-align: right;
+    }
+}

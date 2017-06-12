@@ -1,0 +1,54 @@
+@import 'main';
+
+.header {
+    height: 100px;
+    margin: 0px auto;
+    color: $light_red;
+    background-color: $red;
+    overflow: hidden;
+    
+    .edit {
+        padding-left: 8px;
+        opacity: 0.4;
+    }
+    .edit:hover {
+        opacity: 1;
+    }
+    
+    .logoContainer {
+        display: table-cell;
+        vertical-align: top;
+        img {
+            height: 100px;
+            margin-right: 20px;
+        }
+    }
+    
+    .appTitleContainer {
+        display: table-cell;
+        vertical-align: middle;
+    }
+    
+    .organisationTitle {
+        font-size: 14px;
+        height: 20px;
+    }
+    
+    .appTitle {
+        font-size: 42px;
+    }
+    
+    .appTitle, .organisationTitle {
+        margin: 0;
+        padding: 0;
+        
+        /*white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;*/
+    }
+    
+    .orgNameInput {
+        height: 20px;
+        color: black;
+    }
+}

@@ -1,5 +1,7 @@
 $red: #8F111A;
 $light_red: #E9CFD1;
+$grey: #AAAAAA;
+$dark-grey: #777777;
 
 * {
     margin: 0;
@@ -42,60 +44,6 @@ input:-webkit-autofill:active {
 
 input:focus {
     outline: none !important;
-}
-
-.header {
-    height: 100px;
-    margin: 0px auto;
-    color: $light_red;
-    background-color: $red;    
-    border-bottom: 1px solid black;
-    overflow: hidden;
-    
-    .edit {
-        padding-left: 8px;
-        opacity: 0.4;
-    }
-    .edit:hover {
-        opacity: 1;
-    }
-    
-    .logoContainer {
-        display: table-cell;
-        vertical-align: top;
-        img {
-            height: 100px;
-            margin-right: 20px;
-        }
-    }
-    
-    .appTitleContainer {
-        display: table-cell;
-        vertical-align: middle;
-    }
-    
-    .organisationTitle {
-        font-size: 14px;
-        height: 20px;
-    }
-    
-    .appTitle {
-        font-size: 42px;
-    }
-    
-    .appTitle, .organisationTitle {
-        margin: 0;
-        padding: 0;
-        
-        /*white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;*/
-    }
-    
-    .orgNameInput {
-        height: 20px;
-        color: black;
-    }
 }
 
 .iconButton {
