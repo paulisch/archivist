@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,21 +17,23 @@ import at.fhhgb.mc.archivist.model.Genre;
 import at.fhhgb.mc.archivist.model.Musicpiece;
 import at.fhhgb.mc.archivist.repository.MusicPieceRepository;
 
-@RestController
+@RestController()
+@RequestMapping("/${api.path}/hello")
+@CrossOrigin(origins = "http://localhost:8000")
 public class HelloController {
 	
 	@Autowired
 	private MusicPieceRepository repository;
 	
-	@RequestMapping("/hello/{name}")
+	@RequestMapping("/{name}")
 	public String hello(@PathVariable String name) {
 		return name + ", hello!";
 	}
 	
 	@RequestMapping("/getall")
 	public List<Map<String, String>> getMusicPieces() {
-		
-		List<Map<String, String>> musicPieces=new ArrayList<>();		
+				
+		List<Map<String, String>> musicPieces=new ArrayList<>();
 		
 		Iterator it = repository.findAll().iterator(); //Fetch data from database
 		while (it.hasNext()) { //Iterate over result
@@ -54,15 +58,9 @@ public class HelloController {
 	}
 	
 	@RequestMapping("/remove")
-	public boolean remove (int id) {
-		
-		repository.findOne(id);
-		
+	public boolean remove (int id) {		
+		repository.findOne(id);		
 		repository.delete(id);
 		return true;
 	}
-	
-	
-	
-	
-} 
+}
