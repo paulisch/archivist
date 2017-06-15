@@ -4,6 +4,7 @@
       'ngAnimate',
       'ui.router',
       'LocalStorageModule',
-      'archivist.navigation'
+      'archivist.navigation',
+      'archivist.home'
     ]);
 })(angular);

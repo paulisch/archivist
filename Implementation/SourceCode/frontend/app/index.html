@@ -18,35 +18,34 @@
   <link rel="stylesheet" href="css/style.min.css"/>
 </head>
 
-<body ng-cloak ng-controller="AppController">   
-    <div>
+<body ng-cloak ng-controller="AppController">
      
-      <header></header>
-      
-      <div>
-          <h1>Hello, world!</h1>
+    <header></header>
 
-            <div class="list-group">
-              <a class="list-group-item" href="#"><i class="fa fa-home fa-fw" aria-hidden="true"></i>&nbsp; Home</a>
-              <a class="list-group-item" href="#"><i class="fa fa-book fa-fw" aria-hidden="true"></i>&nbsp; Library</a>
-              <a class="list-group-item" href="#"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>&nbsp; Applications</a>
-              <a class="list-group-item" href="#"><i class="fa fa-cog fa-fw" aria-hidden="true"></i>&nbsp; Settings</a>
-            </div>
+    <ui-view autoscroll="true"></ui-view>
 
-            <button type="button" class="btn btn-default" aria-label="Left Align">
-              <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
-            </button>
+    <!--<div>
+      <h1>Hello, world!</h1>
 
-            <button type="button" class="btn btn-default btn-lg">
-              <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
-            </button>
+        <div class="list-group">
+          <a class="list-group-item" href="#"><i class="fa fa-home fa-fw" aria-hidden="true"></i>&nbsp; Home</a>
+          <a class="list-group-item" href="#"><i class="fa fa-book fa-fw" aria-hidden="true"></i>&nbsp; Library</a>
+          <a class="list-group-item" href="#"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>&nbsp; Applications</a>
+          <a class="list-group-item" href="#"><i class="fa fa-cog fa-fw" aria-hidden="true"></i>&nbsp; Settings</a>
         </div>
 
-      <!--<ui-view autoscroll="true"></ui-view>-->
-      <!--<footer></footer>-->
+        <button type="button" class="btn btn-default" aria-label="Left Align">
+          <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+        </button>
 
-      <!--<ng-include src="'/app/modules/loading/loading.tpl.html'"></ng-include>-->
-    </div>
+        <button type="button" class="btn btn-default btn-lg">
+          <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
+        </button>
+    </div>-->
+
+    <!--<footer></footer>-->
+
+    <!--<ng-include src="'/app/modules/loading/loading.tpl.html'"></ng-include>-->
     
     <script src="js/dependencies.min.js"></script>
     <script src="js/app.min.js" type="text/javascript"></script>

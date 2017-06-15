@@ -1,0 +1,22 @@
+@import 'base';
+
+.home {
+    
+    .searchField, .mainArea {
+        margin: 16px;
+    }
+    
+    .mainArea {
+        h2 {
+            color: $dark-grey;
+            margin: 0 12px;
+            padding: 0;
+        }
+    }
+    
+    .noMusicPiecesArea {
+        color: $grey;
+        margin-top: 100px;
+        text-align: center;
+    }
+}

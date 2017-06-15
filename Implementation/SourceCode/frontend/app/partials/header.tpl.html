@@ -11,28 +11,11 @@
                     <span ng-bind="orgName"></span><button ng-click="saveOrgName(orgName)" type="submit" class="iconButton edit"><i class="fa fa-pencil" aria-hidden="true"></i></button>
                 </span>
                 
-                <form ng-show="editMode">
+                <form ng-show="editMode" novalidate>
                     <input ng-model="orgName" id="orgNameInp" class="orgNameInput">
                     <button ng-click="saveOrgName(orgName)" type="submit" class="iconButton"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
                 </form>
             </div>
-        </div>
-    </div>
-</div>
-
-
-<div class="container-fluid actionbar">
-    <div class="row">
-        <div class="titleContainer">
-            <h1>Übersicht</h1>
-        </div>
-        <div class="actionContainer">
-            <button class="iconButton">
-               <i class="fa fa-pencil" aria-hidden="true"></i>
-            </button>
-            <button class="iconButton">
-               <i class="fa fa-trash" aria-hidden="true"></i>
-            </button>
         </div>
     </div>
 </div>
