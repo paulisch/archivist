@@ -2,13 +2,13 @@
     <actionbar header="header" action-buttons="actionButtons"></actionbar>
        
     <!--Search field -->
-    <div class="row" ng-if="musicpieces">
+    <div class="row" ng-show="musicpieces">
         <div class="col col-lg-4 col-lg-offset-0 col-md-4 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
            <form role="search" novalidate>
                 <div class="input-group searchField">
-                    <input type="text" class="form-control" placeholder="Suchbegriff..." name="srch-term" id="srch-term">
+                    <input type="text" class="form-control" placeholder="Suchbegriff..." name="srch-term" id="srch-term" ng-model="searchText">
                     <div class="input-group-btn">
-                        <button class="btn btn-default" type="submit">
+                        <button class="btn btn-default" type="submit" ng-click="search()">
                             <i class="glyphicon glyphicon-search"></i>
                         </button>
                     </div>
@@ -18,7 +18,7 @@
     </div>
     
     <!--Main area, list of music pieces -->
-    <div class="row" ng-if="musicpieces">
+    <div class="row" ng-show="musicpieces && !noSearchResult">
         <div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="mainArea">
                
@@ -48,14 +48,19 @@
         </div>
     </div>
     
-    <div ng-if="!musicpieces" class="noMusicPiecesArea">
-        <div>
+    <div ng-show="!musicpieces" class="noMusicPiecesArea">
+        <div class="bigButton" ng-click="createAction()">
             <div>
-                <i class="fa fa-plus-square" aria-hidden="true" style="font-size: 256px;"></i>
+                <i class="fa fa-plus-square" aria-hidden="true"></i>
             </div>
-            <div style="font-size: 32px;">
-                Neues Musikstück hinzufügen
-            </div>
+            <p>
+                Neues Musikstück<br>
+                hinzufügen
+            </p>
         </div>
+    </div>
+    
+    <div ng-show="noSearchResult && musicpieces" class="row noSearchResultArea">
+        <p>Leider keine Ergebnisse zu "{{searchText}}" gefunden...</p>
     </div>
 </div>

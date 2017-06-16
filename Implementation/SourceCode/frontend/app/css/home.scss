@@ -15,8 +15,32 @@
     }
     
     .noMusicPiecesArea {
-        color: $grey;
-        margin-top: 100px;
         text-align: center;
+        
+        .bigButton {
+            margin-top: 50px;
+            display: inline-block;
+            opacity: 0.5;
+            i {
+                font-size: 256px;
+            }
+            p {
+                font-size: 36px;
+            }
+        }
+        
+        .bigButton:hover {
+            opacity: 1;
+        }
+    }
+    
+    .noSearchResultArea {
+        text-align: center;
+        opacity: 0.5;
+        
+        p {
+            margin-top: 50px;
+            font-size: 36px;
+        }
     }
 }
