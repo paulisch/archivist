@@ -7,7 +7,7 @@
             header: '=',
             actionButtons: '='
         },
-        restrict: 'E',
+        restrict: 'AE',
         controller: ['$scope', '$attrs', function ($scope, $attrs) {
             
         }],

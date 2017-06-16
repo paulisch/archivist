@@ -1,0 +1,8 @@
+.animate-linear.ng-hide{
+  opacity: 0;
+}
+
+.animate-linear.ng-hide-add,
+.animate-linear.ng-hide-remove {
+  transition: all ease 0.3s;
+}

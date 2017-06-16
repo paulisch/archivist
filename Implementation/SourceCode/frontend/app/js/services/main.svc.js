@@ -23,7 +23,7 @@
             }, function (httpError) {
                 throw httpError;
             });
-        };
+        }
       
       //Return service object
       return {

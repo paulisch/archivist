@@ -1,6 +1,7 @@
-<div class="home flex-container">
-    <actionbar header="header" action-buttons="actionButtons"></actionbar>
-       
+<div ng-show="musicpiecesLoaded" class="home container-fluid animate-linear">
+   
+    <div class="row" actionbar header="header" action-buttons="actionButtons"></div>
+
     <!--Search field -->
     <div class="row" ng-show="musicpieces">
         <div class="col col-lg-4 col-lg-offset-0 col-md-4 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
@@ -8,7 +9,7 @@
                 <div class="input-group searchField">
                     <input type="text" class="form-control" placeholder="Suchbegriff..." name="srch-term" id="srch-term" ng-model="searchText">
                     <div class="input-group-btn">
-                        <button class="btn btn-default" type="submit" ng-click="search()">
+                        <button class="btn btn-default" type="submit" ng-click="onSearch()">
                             <i class="glyphicon glyphicon-search"></i>
                         </button>
                     </div>
@@ -19,37 +20,61 @@
     
     <!--Main area, list of music pieces -->
     <div class="row" ng-show="musicpieces && !noSearchResult">
-        <div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="mainArea">
                
                 <!-- table header for music pieces list -->
                 <div class="row">
-                    <div class="col-lg-3">
-                        <h2>Titel</h2>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
+                        <span ng-click="onSort('title')">
+                            <h3>Titel</h3> <i class="fa" ng-show="sort.title.enabled" ng-class="{'fa-sort-alpha-desc': !sort.title.ascending, 'fa-sort-alpha-asc': sort.title.ascending}" aria-hidden="true"></i>
+                        </span>
                     </div>
                     
-                    <div class="col-lg-3">
-                        <h2>Genre</h2>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
+                        <span ng-click="onSort('genre')">
+                            <h3>Genre</h3> <i class="fa" ng-show="sort.genre.enabled" ng-class="{'fa-sort-alpha-desc': !sort.genre.ascending, 'fa-sort-alpha-asc': sort.genre.ascending}" aria-hidden="true"></i>
+                        </span>
                     </div>
                     
-                    <div class="col-lg-3">
-                        <h2>Komponist</h2>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4 hidden-xs">
+                        <span ng-click="onSort('composer')">
+                            <h3>Komponist</h3> <i class="fa" ng-show="sort.composer.enabled" ng-class="{'fa-sort-alpha-desc': !sort.composer.ascending, 'fa-sort-alpha-asc': sort.composer.ascending}" aria-hidden="true"></i>
+                        </span>
                     </div>
                     
-                    <div class="col-lg-3">
-                        <h2>Schwierigkeit</h2>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
+                        <span ng-click="onSort('difficulty')">
+                            <h3>Schwierigkeit</h3> <i class="fa" ng-show="sort.difficulty.enabled" ng-class="{'fa-sort-alpha-desc': !sort.difficulty.ascending, 'fa-sort-alpha-asc': sort.difficulty.ascending}" aria-hidden="true"></i>
+                        </span>
                     </div>
                 </div>
                 
                 <!-- table content -->
-                <div class="row" ng-repeat="piece in musicpieces">
+                <div class="row listItem" ng-repeat="piece in musicpieces">
+                    <div class="col col-lg-3 col-md-3 col-sm-3 col-xs-4">
+                        <span>{{piece.musicPieceName}}</span>
+                    </div>
+                    
+                    <div class="col col-lg-3 col-md-3 col-sm-3 col-xs-4">
+                        <span>{{piece.genre.genreName}}</span>
+                    </div>
+                    
+                    <div class="col col-lg-3 col-md-3 col-sm-3 col-xs-4 hidden-xs">
+                        <span>{{piece.composer}}</span>
+                    </div>
+                    
+                    <div class="col col-lg-3 col-md-3 col-sm-3 col-xs-4">
+                        <span>{{piece.difficulty}}</span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     
+    <!--Add button if no musicpieces yet-->
     <div ng-show="!musicpieces" class="noMusicPiecesArea">
-        <div class="bigButton" ng-click="createAction()">
+        <div class="bigButton" ng-click="onCreateAction()">
             <div>
                 <i class="fa fa-plus-square" aria-hidden="true"></i>
             </div>
@@ -60,6 +85,7 @@
         </div>
     </div>
     
+    <!--Hint if no search results-->
     <div ng-show="noSearchResult && musicpieces" class="row noSearchResultArea">
         <p>Leider keine Ergebnisse zu "{{searchText}}" gefunden...</p>
     </div>
