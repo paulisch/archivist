@@ -23,8 +23,22 @@
             border-color: $grey;
             border-width: 1px 1px 0px 1px;
             height: 64px;
-            display: flex;
-            align-items: center;
+            overflow: hidden;
+            
+            .col {
+                height: 100%;
+                display: table;
+                
+                * {
+                    display: table-cell;
+                    vertical-align: middle;
+                }
+                input[type="checkbox"] {
+                    width: 24px;
+                    height: 24px;
+                    float: right;
+                }
+            }
         }
         
         .listItem:hover {
@@ -33,6 +47,23 @@
         
         .listItem:last-child {
             border-width: 1px;
+        }
+        
+        .listItem.ng-enter,
+        .listItem.ng-leave {
+            -webkit-transition:0.5s linear all;
+            transition:0.5s linear all;
+        }
+
+        .listItem.ng-enter,
+        .listItem.ng-leave.ng-leave-active {
+            opacity: 0;
+            height: 0px;
+        }
+        .listItem.ng-leave,
+        .listItem.ng-enter.ng-enter-active {
+            opacity: 1;
+            height: 64px;
         }
     }
     

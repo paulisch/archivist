@@ -32,7 +32,7 @@ CREATE TABLE `musicpiece` (
   PRIMARY KEY (`MusicPieceId`),
   KEY `fk_MusicPiece_Genre1_idx` (`GenreId`),
   CONSTRAINT `fk_MusicPiece_Genre1` FOREIGN KEY (`GenreId`) REFERENCES `genre` (`GenreId`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `musicpiece` (
 
 LOCK TABLES `musicpiece` WRITE;
 /*!40000 ALTER TABLE `musicpiece` DISABLE KEYS */;
-INSERT INTO `musicpiece` VALUES (1,'In the End it \'s Yellow',2,'I45','Lorenz Raab',1),(2,'Nutville',3,'','Horace Silver',1);
+INSERT INTO `musicpiece` VALUES (1,'In the End it \'s Yellow',2,'','Lorenz Raab',1),(2,'Nutville',3,'','Horace Silver',1),(3,'Dem Land Tirol die Treue',1,'D3','Florian Pedarnig',25),(4,'A Celtic Impression',2,'A1','Darrol Barry',9),(5,'Axel F.',2,'A14','Harold Faltermeyer',14),(6,'Böhmischer Traum',1,'B9','Norbert Gälle',7),(7,'Brucker Lager',2,'B10','Johann Nepomuk',3),(8,'Country Roads',2,'C18','John Denver',12),(9,'Dixieland for Band',2,'D16','Heinz Herrmannsdörfer',26),(10,'Dobs Boogey und St. Luis Blues',2,'D17','Walter Dobschinski',16),(11,'Der Musikerstreik',2,'D21',NULL,27),(12,'Erinnerung an Zirkus Renz',2,'E5',NULL,6),(13,'Florentiner Marsch',3,'F6','Julius Fucik',6),(14,'Gabriellas Song',2,'G1','Stefan Nilsson',12),(15,'Heal the World',2,'H4','Michael Jackson',12),(16,'Hit the Road Jack',3,'H8','Ray Charles',1),(17,'Heidrun-Polka',2,'H13','Franz Watz',4),(18,'Nachtschwärmer',3,'N1','',10),(19,'Pink Panther',2,'P3','Henry Mancini',2),(20,'Pirates of the Caribbean: Dead Man\'s Chest',3,'P4','Hans Zimmer',21);
 /*!40000 ALTER TABLE `musicpiece` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-06-16 13:22:56
+-- Dump completed on 2017-06-16 17:35:46

@@ -19,7 +19,7 @@
     </div>
     
     <!--Main area, list of music pieces -->
-    <div class="row" ng-show="musicpieces && !noSearchResult">
+    <div class="row" ng-show="musicpieces && filteredMusicPieces.length">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="mainArea">
                
@@ -51,7 +51,7 @@
                 </div>
                 
                 <!-- table content -->
-                <div class="row listItem" ng-repeat="piece in musicpieces">
+                <div class="row listItem" ng-repeat="piece in filteredMusicPieces = (musicpieces | orderBy: getOrderBy() | filter: filterFunction) track by piece.musicPieceId">
                     <div class="col col-lg-3 col-md-3 col-sm-3 col-xs-4">
                         <span>{{piece.musicPieceName}}</span>
                     </div>
@@ -64,8 +64,12 @@
                         <span>{{piece.composer}}</span>
                     </div>
                     
-                    <div class="col col-lg-3 col-md-3 col-sm-3 col-xs-4">
-                        <span>{{piece.difficulty}}</span>
+                    <div class="col col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                        <span>{{getDifficultyLabel(piece.difficulty)}}</span>
+                    </div>
+                    
+                    <div class="col col-lg-1 col-md-1 col-sm-1 col-xs-2" ng-click="onCheck(piece)">
+                        <span><input type="checkbox" ng-model="piece.isSelected" ng-click="$event.stopPropagation();"></span>
                     </div>
                 </div>
             </div>
@@ -86,7 +90,7 @@
     </div>
     
     <!--Hint if no search results-->
-    <div ng-show="noSearchResult && musicpieces" class="row noSearchResultArea">
+    <div ng-show="musicpieces && !filteredMusicPieces.length && searchText" class="row noSearchResultArea">
         <p>Leider keine Ergebnisse zu "{{searchText}}" gefunden...</p>
     </div>
 </div>

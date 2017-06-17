@@ -5,7 +5,7 @@
         </div>
         <div class="actionContainer">
            
-           <button ng-repeat="btn in actionButtons" ng-disabled="btn.disabled()" ng-click="btn.onclick()" ng-class="{'disabled' : btn.disabled()}" ng-hide="btn.hidden()" class="iconButton">
+           <button ng-repeat="btn in actionButtons track by $index" ng-disabled="btn.disabled()" ng-click="btn.onclick()" ng-class="{'disabled' : btn.disabled()}" ng-hide="btn.hidden()" class="iconButton">
                <i class="{{btn.icon}}" aria-hidden="true"></i>
            </button>
            

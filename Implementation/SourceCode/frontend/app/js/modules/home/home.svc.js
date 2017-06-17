@@ -8,9 +8,19 @@
           return MainService.httpRequest('GET', '/musicpieces/get');
       }
       
+      function deleteMusicPieces(musicPieceIds) {
+          var idsAsStr = "";
+          for(var i = 0; i<musicPieceIds.length; i++) {
+              idsAsStr += musicPieceIds[i] + ",";
+          }
+          idsAsStr = idsAsStr.substr(0, idsAsStr.length - 1);
+          return MainService.httpRequest('DELETE', '/musicpieces/delete/' + idsAsStr);
+      }
+      
       //Return service object
       return {
-          getMusicPieces : getMusicPieces
+          getMusicPieces : getMusicPieces,
+          deleteMusicPieces : deleteMusicPieces
       };
     }
   ]);
