@@ -9,7 +9,7 @@
         //Set HTML5 mode (if true --> pretty urls enabled)
         $locationProvider.html5Mode({
           enabled: false,
-          requireBase: false //no <base> in index.html required (https://docs.angularjs.org/error/$location/nobase)
+          requireBase: true //no <base> in index.html required (https://docs.angularjs.org/error/$location/nobase)
         });
 
         //Configure states
@@ -17,8 +17,15 @@
             .state('home',
             {
                 url: '/home',
-                templateUrl: '/partials/home.html',
+                templateUrl: 'partials/home.html',
                 controller: 'HomeCtrl'
+            })
+            .state('musicpiece',
+            {
+                url: '/musicpiece',
+                templateUrl: 'partials/musicpiece.html',
+                controller: 'MusicPieceCtrl',
+                params : { musicPieceId: null }
             });
     }]);
 })(angular);

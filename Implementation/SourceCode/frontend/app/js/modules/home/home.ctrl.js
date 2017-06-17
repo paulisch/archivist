@@ -17,11 +17,11 @@
             $scope.onCheck = onCheck;
             $scope.filterFunction = function(musicPiece)
             {
-                if (!$scope.searchText || $scope.searchText == ""
-                    || (musicPiece.musicPieceName.toLowerCase().indexOf($scope.searchText.toLowerCase()) != -1)
-                    || (musicPiece.composer && musicPiece.composer.toLowerCase().indexOf($scope.searchText.toLowerCase()) != -1)
-                    || (musicPiece.archiveNo && musicPiece.archiveNo.toLowerCase().indexOf($scope.searchText.toLowerCase()) != -1)
-                    || (musicPiece.genre && musicPiece.genre.genreName.toLowerCase().indexOf($scope.searchText.toLowerCase()) != -1)
+                if (!$scope.searchText || $scope.searchText === "" ||
+                    (musicPiece.musicPieceName.toLowerCase().indexOf($scope.searchText.toLowerCase()) != -1) ||
+                    (musicPiece.composer && musicPiece.composer.toLowerCase().indexOf($scope.searchText.toLowerCase()) != -1) ||
+                    (musicPiece.archiveNo && musicPiece.archiveNo.toLowerCase().indexOf($scope.searchText.toLowerCase()) != -1) ||
+                    (musicPiece.genre && musicPiece.genre.genreName.toLowerCase().indexOf($scope.searchText.toLowerCase()) != -1)
                    ) {
                     return true;
                 }

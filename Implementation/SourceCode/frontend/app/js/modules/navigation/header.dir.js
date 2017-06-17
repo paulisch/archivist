@@ -2,7 +2,7 @@
   angular.module('archivist.navigation')
     .directive('header', [function() {
       return {
-        templateUrl: '/partials/header.tpl.html',
+        templateUrl: 'partials/header.tpl.html',
         scope: { },
         restrict: 'E',
         controller: ['$scope', '$attrs', 'NavigationService', '$timeout', '$window', function ($scope, $attrs, NavigationService, $timeout, $window) {
