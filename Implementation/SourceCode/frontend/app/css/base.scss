@@ -23,7 +23,10 @@ ng-view:after, ui-view:after {
     display: block;
 }
 
-a, a:hover, a:visited {
+a, a:hover,
+a:visited,
+a:focus,
+a:active {
     color: inherit;
     text-decoration: inherit;
 }

@@ -5,6 +5,8 @@
       'ui.router',
       'LocalStorageModule',
       'archivist.navigation',
-      'archivist.home'
+      'archivist.error',
+      'archivist.home',
+      'archivist.musicpiece'
     ]);
 })(angular);

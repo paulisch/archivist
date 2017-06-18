@@ -28,15 +28,26 @@
         margin-right: 15px;
     }
     
+    .row {
+        height: 42px;
+    }
+    
+    .col {
+        height: 100%;
+        display: table;
+
+        * {
+            display: table-cell;
+            vertical-align: middle;
+        }
+    }
+    
     .titleContainer {
-        display: table-cell;
-        vertical-align: middle;
     }
     
     .actionContainer {
-        width: 100%;
-        display: table-cell;
-        vertical-align: middle;
-        text-align: right;
+        button {
+            float: right;
+        }
     }
 }

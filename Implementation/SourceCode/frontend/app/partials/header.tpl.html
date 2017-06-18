@@ -1,10 +1,12 @@
 <div class="container-fluid header">
     <div class="row">
         <div class="logoContainer">
-           <img ng-src="img/logo.png">
+           <a ui-sref="home">
+               <img ng-src="img/logo.png">
+            </a>
         </div>
         <div class="appTitleContainer">
-            <h1 class="appTitle">Archivist</h1>
+            <a ui-sref="home"><h1 class="appTitle" >Archivist</h1></a>
             
             <div class="organisationTitle">
                 <span ng-show="!editMode" ng-click="edit()">

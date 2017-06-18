@@ -22,10 +22,17 @@
             })
             .state('musicpiece',
             {
-                url: '/musicpiece',
+                url: '/musicpiece/:musicPieceId',
                 templateUrl: 'partials/musicpiece.html',
                 controller: 'MusicPieceCtrl',
                 params : { musicPieceId: null }
+            })
+            .state('error',
+            {
+                url: '/error',
+                templateUrl: 'partials/error.html',
+                controller: 'ErrorCtrl',
+                params : { error: null }
             });
     }]);
 })(angular);

@@ -2,8 +2,8 @@
     'use strict';
     var ngmod = angular.module('archivist.home');
     ngmod.controller('HomeCtrl', [
-        '$scope', 'HomeService', 'AppConstants',
-        function ($scope, HomeService, AppConstants) {
+        '$scope', 'HomeService', 'AppConstants', '$state',
+        function ($scope, HomeService, AppConstants, $state) {
             
             //Init
             $scope.musicpieces = null;
@@ -119,7 +119,8 @@
                 return false;
             }
             function onCreateAction() {
-                alert("create");
+                //$state.go('musicpiece', { musicPieceId : 0 });
+                $state.go('musicpiece');
             }
             
             
@@ -181,11 +182,13 @@
                 HomeService.getMusicPieces().then(function successCallback(response) {
                     $scope.musicpieces = response.data;
                     
-                    for(var i = 0; i<$scope.musicpieces.length; i++) {
-                        $scope.musicpieces[i].isSelected = false;
-                    }
-                    
-                    onSort('title');
+                    if ($scope.musicpieces) {
+                        for(var i = 0; i<$scope.musicpieces.length; i++) {
+                            $scope.musicpieces[i].isSelected = false;
+                        }
+
+                        onSort('title');
+                    }                        
                     
                     $scope.musicpiecesLoaded = true;
                 }, function errorCallback(response) {

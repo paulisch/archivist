@@ -15,7 +15,7 @@
             loadMusicPiece();
                         
             //Action bar
-            $scope.header = "<Name Musikstück>";
+            $scope.header = "NameStück>";
             $scope.actionButtons = [
                 {
                     label: "Bearbeiten",

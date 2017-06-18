@@ -91,6 +91,10 @@
         text-align: center;
         opacity: 0.5;
         
+        span {
+            word-wrap: break-word;
+        }
+        
         p {
             margin-top: 50px;
             font-size: 36px;

@@ -1,7 +1,9 @@
 (function (angular) {
   var ngmod = angular.module('archivist.webapp');
 
-  ngmod.service('MainService', ['$http', function($http) {
+  ngmod.service('MainService', [
+      '$http', '$state',
+      function($http, $state) {
       'use strict';
       
       var rootUrl = "http://localhost:8080";
@@ -21,6 +23,11 @@
             ).then(function (response) {
                 return response;
             }, function (httpError) {
+                //if(httpError.status == 404 || httpError.status == -1) {
+                    //404: not found
+                    //-1:  timed out
+                    $state.go('error', {error : httpError});
+                //}
                 throw httpError;
             });
         }
