@@ -60,17 +60,17 @@
             $scope.header = "Übersicht";
             $scope.actionButtons = [
                 {
-                    label: "Löschen",
-                    icon: "fa fa-trash",
-                    disabled: deleteActionDisabled,
-                    onclick: onDeleteAction,
-                    hidden: musicpiecesEmpty
-                },
-                {
                     label: "Neu",
                     icon: "fa fa-plus-square",
                     disabled: createActionDisabled,
                     onclick: onCreateAction,
+                    hidden: musicpiecesEmpty
+                },
+                {
+                    label: "Löschen",
+                    icon: "fa fa-trash",
+                    disabled: deleteActionDisabled,
+                    onclick: onDeleteAction,
                     hidden: musicpiecesEmpty
                 }
             ];
@@ -126,7 +126,7 @@
             
             //Controller methods            
             function onSearch() {
-                alert("search");
+                
             }
             
             function musicpiecesEmpty() {
@@ -164,7 +164,7 @@
             
             function getDifficultyLabel(difficulty) {
                 var difficulties = AppConstants.difficulties;
-                var result = "";
+                var result = null;
                 for(var i=0; i<difficulties.length; i++) {
                     var diff = difficulties[i];
                     if (diff.id == difficulty) {

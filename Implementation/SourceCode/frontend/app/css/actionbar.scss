@@ -12,19 +12,28 @@
         color: $dark-grey;
         margin: 0 15px;
         padding: 0;
+        
+        @media (max-width: 767px) {
+            font-size: 24px;
+        }
     }
     
     button {
-        margin-right: 4px;
-        margin-left: 4px;
+        margin-right: 12px;
+        margin-left: 12px;
+        padding: 0;
         
         i {
             margin: 0;
             padding: 0;
             font-size: 28px;
+            
+            @media (max-width: 767px) {
+                font-size: 26px;
+            }
         }
     }
-    button:last-child {
+    button:first-child {
         margin-right: 15px;
     }
     

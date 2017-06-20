@@ -32,10 +32,18 @@
     .organisationTitle {
         font-size: 14px;
         height: 20px;
+        
+        @media (max-width: 767px) {
+            height: 15px;
+            font-size: 12px;
+        }
     }
     
     .appTitle {
         font-size: 42px;
+        @media (max-width: 767px) {
+            font-size: 32px;
+        }
     }
     
     .appTitle, .organisationTitle {
@@ -50,5 +58,10 @@
     .orgNameInput {
         height: 20px;
         color: black;
+        
+        @media (max-width: 767px) {
+            height: 15px;
+            font-size: 12px;
+        }
     }
 }

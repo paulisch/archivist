@@ -2,8 +2,51 @@
    
     <div class="row" actionbar header="header" action-buttons="actionButtons"></div>
     
-    <div>
-        ID: {{musicPieceId}}
+    <!--Main area, music piece -->
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="mainArea">
+               
+                <div class="row">
+                   
+                    <!-- Titel, Genre -->
+                    <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <label>Titel</label>
+                        <div>
+                            <span class="detailValue">{{musicpiece.musicPieceName || '-'}}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <label>Genre</label>
+                        <div>
+                            <span class="detailValue">{{musicpiece.genre.genreName || '-'}}</span>
+                        </div>
+                    </div>
+                
+                    <!-- Komponist, Schwierigkeit, Archivnummer -->
+                    <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <label>Komponist</label>
+                        <div>
+                            <span class="detailValue">{{musicpiece.composer || '-'}}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <label>Schwierigkeit</label>
+                        <div>
+                            <span class="detailValue">{{getDifficultyLabel(musicpiece.difficulty) || '-'}}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <label>Archivnummer</label>
+                        <div>
+                            <span class="detailValue">{{musicpiece.archiveNo || '-'}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    
 </div>

@@ -25,13 +25,13 @@
                
                 <!-- table header for music pieces list -->
                 <div class="row">
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                         <span ng-click="onSort('title')">
                             <h3>Titel</h3> <i class="fa" ng-show="sort.title.enabled" ng-class="{'fa-sort-alpha-desc': !sort.title.ascending, 'fa-sort-alpha-asc': sort.title.ascending}" aria-hidden="true"></i>
                         </span>
                     </div>
                     
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 hidden-xs">
                         <span ng-click="onSort('genre')">
                             <h3>Genre</h3> <i class="fa" ng-show="sort.genre.enabled" ng-class="{'fa-sort-alpha-desc': !sort.genre.ascending, 'fa-sort-alpha-asc': sort.genre.ascending}" aria-hidden="true"></i>
                         </span>
@@ -43,7 +43,7 @@
                         </span>
                     </div>
                     
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4 hidden-xs">
                         <span ng-click="onSort('difficulty')">
                             <h3>Schwierigkeit</h3> <i class="fa" ng-show="sort.difficulty.enabled" ng-class="{'fa-sort-alpha-desc': !sort.difficulty.ascending, 'fa-sort-alpha-asc': sort.difficulty.ascending}" aria-hidden="true"></i>
                         </span>
@@ -52,23 +52,25 @@
                 
                 <!-- table content -->
                 <div class="row listItem" ng-repeat="piece in filteredMusicPieces = (musicpieces | orderBy: getOrderBy() | filter: filterFunction) track by piece.musicPieceId">
-                    <div class="col col-lg-3 col-md-3 col-sm-3 col-xs-4">
-                        <span>{{piece.musicPieceName}}</span>
-                    </div>
+                    <a ui-sref="musicpiece({musicPieceId:piece.musicPieceId})">
+                        <div class="col col-lg-3 col-md-3 col-sm-3 col-xs-8">
+                            <span>{{piece.musicPieceName}}</span>
+                        </div>
+
+                        <div class="col col-lg-3 col-md-3 col-sm-3 col-xs-4 hidden-xs">
+                            <span>{{piece.genre.genreName || '-'}}</span>
+                        </div>
+
+                        <div class="col col-lg-3 col-md-3 col-sm-3 col-xs-4 hidden-xs">
+                            <span>{{piece.composer || '-'}}</span>
+                        </div>
+
+                        <div class="col col-lg-2 col-md-2 col-sm-2 col-xs-2 hidden-xs">
+                            <span>{{getDifficultyLabel(piece.difficulty) || '-'}}</span>
+                        </div>
+                    </a>
                     
-                    <div class="col col-lg-3 col-md-3 col-sm-3 col-xs-4">
-                        <span>{{piece.genre.genreName}}</span>
-                    </div>
-                    
-                    <div class="col col-lg-3 col-md-3 col-sm-3 col-xs-4 hidden-xs">
-                        <span>{{piece.composer}}</span>
-                    </div>
-                    
-                    <div class="col col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                        <span>{{getDifficultyLabel(piece.difficulty)}}</span>
-                    </div>
-                    
-                    <div class="col col-lg-1 col-md-1 col-sm-1 col-xs-2" ng-click="onCheck(piece)">
+                    <div class="col col-lg-1 col-md-1 col-sm-1 col-xs-4" ng-click="onCheck(piece)">
                         <span><input type="checkbox" ng-model="piece.isSelected" ng-click="$event.stopPropagation();"></span>
                     </div>
                 </div>

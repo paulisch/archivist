@@ -4,10 +4,13 @@
   ngmod.service('MusicPieceService', ['MainService', function(MainService) {
       'use strict';
       
-      //Your code here
+      function getMusicPiece(id) {
+          return MainService.httpRequest('GET', '/musicpieces/get/'+id);
+      }
       
       //Return service object
       return {
+          getMusicPiece : getMusicPiece
       };
     }
   ]);

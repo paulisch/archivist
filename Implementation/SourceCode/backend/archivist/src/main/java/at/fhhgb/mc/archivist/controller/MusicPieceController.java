@@ -31,17 +31,26 @@ public class MusicPieceController {
 		Iterator<Musicpiece> it = repository.findAll().iterator();
 		while(it.hasNext()) {
 			Musicpiece current = it.next();
-			current.setScores(null);
-			
-			if (current.getGenre() != null) {
-				current.getGenre().setMusicpieces(null);
-				current.getGenre().setGenre(null);
-				current.getGenre().setGenres(null);
-			}
-			
+			prepareForSerialization(current);			
 			result.add(current);
 		}
 		return result;
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, path = "/get/{id}")
+	public Musicpiece get(@PathVariable Integer id) {
+		Musicpiece result = repository.findOne(id);
+		prepareForSerialization(result);
+		return result;
+	}
+	
+	private void prepareForSerialization(Musicpiece musicPiece) {
+		musicPiece.setScores(null);
+		if (musicPiece.getGenre() != null) {
+			musicPiece.getGenre().setMusicpieces(null);
+			musicPiece.getGenre().setGenre(null);
+			musicPiece.getGenre().setGenres(null);
+		}
 	}
 	
 	@RequestMapping(method = RequestMethod.DELETE, path = "/delete/{musicPieceIds}")
