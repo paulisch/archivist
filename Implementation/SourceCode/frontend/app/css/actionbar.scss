@@ -6,16 +6,11 @@
     border-style: solid;
     border-width: 1px 0px 1px 0px;
     margin: 0px auto;
-    padding: 15px;
+    padding: 4px;
     
-    h2 {
-        color: $dark-grey;
-        margin: 0 15px;
-        padding: 0;
-        
-        @media (max-width: 767px) {
-            font-size: 24px;
-        }
+    @media (max-width: 767px) {
+        background-color: $red;
+        color: white;
     }
     
     button {
@@ -29,37 +24,73 @@
             font-size: 28px;
             
             @media (max-width: 767px) {
-                font-size: 26px;
+                font-size: 20px;
             }
         }
     }
-    button:first-child {
-        margin-right: 15px;
-    }
+    
     
     .row {
-        height: 42px;
+        height: 64px;
+        @media (max-width: 767px) {
+            height: 42px;
+        }
     }
     
     .col {
         height: 100%;
-        display: table;
+        display: flex;
+        /*align-items: center;*/
+        justify-content: center;
+        flex-direction: column;
 
         span {
-            display: table-cell;
-            vertical-align: middle;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            
+            h2 {
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
         }
     }
     
     .titleContainer {
-        button, h2 {
-            float: left;
+        span {
+            height: 100%;
+            display: flex;
+            /*align-items: center;*/
+            justify-content: center;
+            flex-direction: column;
+        }
+        
+        h2 {
+            color: $dark-grey;
+            margin: 0;
+            padding: 0;
+            @media (max-width: 767px) {
+                font-size: 16px;
+                color: white;
+            }
+        }
+        
+        button {
+            color: black;
+            @media (max-width: 767px) {
+                color: white;
+            }
+            padding: 0;
+            margin: 0 8px 0 0;
         }
     }
     
     .actionContainer {
         button {
             float: right;
+        }
+        button:first-child {
+            margin-right: 15px;
         }
     }
 }

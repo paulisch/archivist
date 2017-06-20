@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import at.fhhgb.mc.archivist.model.Musicpiece;
+import at.fhhgb.mc.archivist.model.Score;
 import at.fhhgb.mc.archivist.repository.MusicPieceRepository;
 
 @RestController
@@ -47,7 +49,17 @@ public class MusicPieceController {
 	@RequestMapping(method = RequestMethod.GET, path = "/get/{id}")
 	public Musicpiece get(@PathVariable Integer id) {
 		Musicpiece result = repository.findOne(id);
+		
+		List<Score> scores = result.getScores();
+		for(Score scr : scores) {
+			scr.setMusicpiece(null);
+			scr.getInstrument().setScores(null);
+		}
+		
 		prepareForSerialization(result);
+		
+		result.setScores(scores);
+		
 		return result;
 	}
 	

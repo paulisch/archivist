@@ -1,6 +1,6 @@
 <div class="container-fluid header">
     <div class="row">
-        <div class="logoContainer">
+        <div class="logoContainer hidden-xs">
            <a ui-sref="home">
                <img ng-src="img/logo.png">
             </a>
@@ -10,7 +10,7 @@
             
             <div class="organisationTitle">
                 <span ng-show="!editMode" ng-click="edit()">
-                    <span ng-bind="orgName"></span><button ng-click="saveOrgName(orgName)" type="submit" class="iconButton edit"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                    <span>{{orgName}}</span><button ng-click="saveOrgName(orgName)" type="submit" class="iconButton edit"><i class="fa fa-pencil" aria-hidden="true"></i></button>
                 </span>
                 
                 <form ng-show="editMode" novalidate>

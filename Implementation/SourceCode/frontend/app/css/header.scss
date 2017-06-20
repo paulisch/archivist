@@ -7,6 +7,18 @@
     background-color: $red;
     overflow: hidden;
     
+    @media (max-width: 767px) {
+        height: 70px;
+    }
+    
+    .row {
+        height: 100%;                
+        display: flex;
+        /*align-items: center;*/
+        align-items: center;
+        justify-content: flex-start;
+    }
+    
     .edit {
         padding-left: 8px;
         opacity: 0.4;
@@ -16,17 +28,13 @@
     }
     
     .logoContainer {
-        display: table-cell;
-        vertical-align: top;
         img {
             height: 100px;
-            margin-right: 20px;
         }
     }
     
     .appTitleContainer {
-        display: table-cell;
-        vertical-align: middle;
+        margin-left: 20px;
     }
     
     .organisationTitle {

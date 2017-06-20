@@ -1,22 +1,24 @@
 <div class="container-fluid actionbar">
     <div class="row">        
-        <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6 titleContainer">
+        <div class="col col-lg-8 col-md-8 col-sm-7 col-xs-7 titleContainer">
             <span>
-               <button ng-show="header.showBackButton" class="iconButton" ng-click="goBack()">
-                    <i class="fa fa-arrow-left" aria-hidden="true"></i>
-                    <!--<i class="fa fa-arrow-circle-left" aria-hidden="true"></i>-->
-                    <!--<i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>-->
-                </button>
-                <h2>{{header.text}}</h2>
+                <h2>
+                   <button ng-show="header.showBackButton" class="iconButton" ng-click="goBack()">
+                        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                        <!--<i class="fa fa-arrow-circle-left" aria-hidden="true"></i>-->
+                        <!--<i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>-->
+                    </button>
+                    {{header.text}}
+                </h2>
             </span>
         </div>
         
-        <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6 actionContainer">
+        <div class="col col-lg-4 col-md-4 col-sm-5 col-xs-5 actionContainer">
             <span>
                 <button ng-repeat="btn in actionButtons track by $index" ng-disabled="btn.disabled()" ng-click="btn.onclick()" ng-class="{'disabled' : btn.disabled()}" ng-hide="btn.hidden()" class="iconButton">
                    <i class="{{btn.icon}}" aria-hidden="true"></i>
                </button>
            </span>
-        </div>        
+        </div>
     </div>
 </div>

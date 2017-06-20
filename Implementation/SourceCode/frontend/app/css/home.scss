@@ -26,16 +26,27 @@
             border-style: solid;
             border-color: $grey;
             border-width: 1px 1px 0px 1px;
-            height: 64px;
             overflow: hidden;
+            height: 64px;
+            /*line-height: 64px;
+            white-space: nowrap;*/
             
             .col {
-                height: 100%;
-                display: table;
+                /*display: table;*/
+                height: 100%;                
+                display: flex;
+                /*align-items: center;*/
+                justify-content: center;
+                flex-direction: column;
                 
-                * {
+                span {
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    /*
+                    white-space: nowrap;
                     display: table-cell;
                     vertical-align: middle;
+                    */
                 }
                 input[type="checkbox"] {
                     width: 24px;
