@@ -36,7 +36,7 @@ public class ScoreController {
 		Musicpiece p = new Musicpiece();
 		p.setMusicPieceId(musicPieceId);
 		
-		Iterator<Score> it = repository.findByMusicpiece_MusicPieceId(musicPieceId);
+		Iterator<Score> it = repository.findByMusicpiece_MusicPieceId(musicPieceId).iterator();
 		while(it.hasNext()) {
 			Score current = it.next();
 			prepareForSerialization(current);
