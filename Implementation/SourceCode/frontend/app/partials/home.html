@@ -25,13 +25,19 @@
                
                 <!-- table header for music pieces list -->
                 <div class="row">
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
+                        <span ng-click="onSort('archiveNo')">
+                            <h3>Nr.</h3> <i class="fa" ng-show="sort.archiveNo.enabled" ng-class="{'fa-sort-alpha-desc': !sort.archiveNo.ascending, 'fa-sort-alpha-asc': sort.archiveNo.ascending}" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                                       
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-10">
                         <span ng-click="onSort('title')">
                             <h3>Titel</h3> <i class="fa" ng-show="sort.title.enabled" ng-class="{'fa-sort-alpha-desc': !sort.title.ascending, 'fa-sort-alpha-asc': sort.title.ascending}" aria-hidden="true"></i>
                         </span>
                     </div>
                     
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 hidden-xs">
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 hidden-xs">
                         <span ng-click="onSort('genre')">
                             <h3>Genre</h3> <i class="fa" ng-show="sort.genre.enabled" ng-class="{'fa-sort-alpha-desc': !sort.genre.ascending, 'fa-sort-alpha-asc': sort.genre.ascending}" aria-hidden="true"></i>
                         </span>
@@ -53,11 +59,15 @@
                 <!-- table content -->
                 <div class="row listItem" ng-repeat="piece in filteredMusicPieces = (musicpieces | orderBy: getOrderBy() | filter: filterFunction) track by piece.musicPieceId">
                     <a ui-sref="musicpiece({musicPieceId:piece.musicPieceId})">
-                        <div class="col col-lg-3 col-md-3 col-sm-3 col-xs-8">
+                       <div class="col col-lg-1 col-md-1 col-sm-1 col-xs-2">
+                            <span>{{piece.archiveNo || '-'}}</span>
+                        </div>
+                       
+                        <div class="col col-lg-3 col-md-3 col-sm-3 col-xs-6">
                             <span>{{piece.musicPieceName}}</span>
                         </div>
 
-                        <div class="col col-lg-3 col-md-3 col-sm-3 col-xs-4 hidden-xs">
+                        <div class="col col-lg-2 col-md-2 col-sm-2 col-xs-4 hidden-xs">
                             <span>{{piece.genre.genreName || '-'}}</span>
                         </div>
 
@@ -65,7 +75,7 @@
                             <span>{{piece.composer || '-'}}</span>
                         </div>
 
-                        <div class="col col-lg-2 col-md-2 col-sm-2 col-xs-2 hidden-xs">
+                        <div class="col col-lg-2 col-md-2 col-sm-2 col-xs-1 hidden-xs">
                             <span>{{getDifficultyLabel(piece.difficulty) || '-'}}</span>
                         </div>
                     </a>

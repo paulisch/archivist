@@ -20,7 +20,10 @@
             }
                         
             //Action bar
-            $scope.header = "Neues Musikstück";
+            $scope.header = {
+                text : "Neues Musikstück",
+                showBackButton : true
+            };
             $scope.actionButtons = [
                 {
                     label: "Bearbeiten",
@@ -59,7 +62,7 @@
             function loadMusicPiece(id) {
                 MusicPieceService.getMusicPiece(id).then(function successCallback(response) {
                     $scope.musicpiece = response.data;                    
-                    $scope.header = $scope.musicpiece.musicPieceName;
+                    $scope.header.text = $scope.musicpiece.musicPieceName;
                     $scope.musicpieceLoaded = true;
                 }, function errorCallback(response) {
                     console.log(response);

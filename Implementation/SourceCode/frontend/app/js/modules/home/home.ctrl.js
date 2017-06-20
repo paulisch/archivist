@@ -32,6 +32,11 @@
             
             //Sorting methods
             $scope.sort = {
+                archiveNo : {
+                    ascending : false,
+                    enabled : false,
+                    property : 'archiveNo'
+                },
                 title : {
                     ascending : false,
                     enabled : false,
@@ -57,7 +62,10 @@
             $scope.onSort = onSort;
             
             //Action bar
-            $scope.header = "Übersicht";
+            $scope.header = {
+                text : "Übersicht",
+                showBackButton : false
+            };
             $scope.actionButtons = [
                 {
                     label: "Neu",

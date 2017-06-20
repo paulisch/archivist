@@ -80,9 +80,16 @@
             opacity: 0.5;
             i {
                 font-size: 256px;
+                @media (max-width: 767px) {
+                    font-size: 172px;
+                }
             }
             p {
                 font-size: 36px;
+                word-wrap: break-word;
+                @media (max-width: 767px) {
+                    font-size: 26px;
+                }
             }
         }
         
@@ -102,6 +109,10 @@
         p {
             margin-top: 50px;
             font-size: 36px;
+            word-wrap: break-word;
+            @media (max-width: 767px) {
+                font-size: 26px;
+            }
         }
     }
 }

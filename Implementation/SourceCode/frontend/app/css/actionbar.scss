@@ -45,13 +45,16 @@
         height: 100%;
         display: table;
 
-        * {
+        span {
             display: table-cell;
             vertical-align: middle;
         }
     }
     
     .titleContainer {
+        button, h2 {
+            float: left;
+        }
     }
     
     .actionContainer {
