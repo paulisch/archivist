@@ -35,11 +35,16 @@
             
             height: 100px;
             width: 100px;
+            margin: 1px;
             
             /*line-height: 100px;
             text-align: center;*/
             
-            background: #EAEAEA;
+            background-image: url("../img/score.png");
+            background-size:     cover;
+            background-repeat:   no-repeat;
+            background-position: center center;
+            
             border-color: black;
             border-style: solid;
             border-width: 1px;
@@ -58,8 +63,20 @@
                 flex-direction: column;
                 
                 overflow: hidden;
+                word-wrap: break-word;
                 text-overflow: ellipsis;
+                text-align: center;
+                
+                font-weight: bold;
             }
+        }
+        
+        .scoreItem:hover {
+            -webkit-transform:scale(1.05); /* Safari and Chrome */
+                -moz-transform:scale(1.05); /* Firefox */
+                -ms-transform:scale(1.05); /* IE 9 */
+                -o-transform:scale(1.05); /* Opera */
+                 transform:scale(1.05);
         }
     }
 }

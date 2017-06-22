@@ -7,6 +7,7 @@
       'archivist.navigation',
       'archivist.error',
       'archivist.home',
-      'archivist.musicpiece'
+      'archivist.musicpiece',
+      'archivist.scores'
     ]);
 })(angular);

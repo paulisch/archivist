@@ -22,6 +22,9 @@ public class Score implements Serializable {
 	@Column(nullable=false, length=45)
 	private String fileName;
 
+	@Column(nullable=false)
+	private int instrumentNo;
+
 	//bi-directional many-to-one association to Instrument
 	@ManyToOne
 	@JoinColumn(name="InstrumentId", nullable=false)
@@ -49,6 +52,14 @@ public class Score implements Serializable {
 
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
+	}
+
+	public int getInstrumentNo() {
+		return this.instrumentNo;
+	}
+
+	public void setInstrumentNo(int instrumentNo) {
+		this.instrumentNo = instrumentNo;
 	}
 
 	public Instrument getInstrument() {

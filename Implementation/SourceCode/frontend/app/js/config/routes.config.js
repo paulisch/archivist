@@ -14,6 +14,13 @@
 
         //Configure states
         $stateProvider
+            .state('error',
+            {
+                url: '/error',
+                templateUrl: 'partials/error.html',
+                controller: 'ErrorCtrl',
+                params : { error: null }
+            })
             .state('home',
             {
                 url: '/home',
@@ -26,13 +33,13 @@
                 templateUrl: 'partials/musicpiece.html',
                 controller: 'MusicPieceCtrl',
                 params : { musicPieceId: null }
-            })
-            .state('error',
+            })            
+            .state('scores',
             {
-                url: '/error',
-                templateUrl: 'partials/error.html',
-                controller: 'ErrorCtrl',
-                params : { error: null }
+                url: '/scores/:musicPieceId',
+                templateUrl: 'partials/scores.html',
+                controller: 'ScoresCtrl',
+                params : { musicPieceId: null }
             });
     }]);
 })(angular);

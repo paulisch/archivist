@@ -8,14 +8,16 @@
             //Init
             $scope.musicPieceId = $stateParams.musicPieceId;
             $scope.musicpiece = null;
+            $scope.musicPieceForEditing = null;
             $scope.musicpieceLoaded = false;
             
-            //<a ui-sref="pieceState({musicPieceId:'<id>'})">piece</a>
-            
             if ($scope.musicPieceId) {
+                $scope.mode = "view";
                 loadMusicPiece($scope.musicPieceId);
             }
             else {
+                $scope.mode = "edit";
+                $scope.musicPieceForEditing = { };
                 $scope.musicpieceLoaded = true;
             }
                         
@@ -30,31 +32,63 @@
                     icon: "fa fa-pencil",
                     disabled: editActionDisabled,
                     onclick: onEditAction,
-                    hidden: function() { return false; }
+                    hidden: function() { return $scope.mode != "view"; }
                 },
                 {
                     label: "Löschen",
                     icon: "fa fa-trash",
                     disabled: deleteActionDisabled,
                     onclick: onDeleteAction,
-                    hidden: function() { return false; }
+                    hidden: function() { return $scope.mode != "view"; }
+                },
+                {
+                    label: "Speichern",
+                    icon: "fa fa-floppy-o",
+                    disabled: saveActionDisabled,
+                    onclick: onSaveAction,
+                    hidden: function() { return $scope.mode != "edit"; }
+                },
+                {
+                    label: "Abbrechen",
+                    icon: "fa fa-window-close",
+                    disabled: cancelActionDisabled,
+                    onclick: onCancelAction,
+                    hidden: function() { return $scope.mode != "edit"; }
                 }
             ];
             $scope.getDifficultyLabel = getDifficultyLabel;
             
             //Action bar methods
             function deleteActionDisabled() {
-                return false;
+                return $scope.mode != "view";
             }
             function onDeleteAction() {
                 
             }
             
             function editActionDisabled() {
-                return false;
+                return $scope.mode != "view";
             }
             function onEditAction() {
-                
+                $scope.musicPieceForEditing = angular.extend({ }, $scope.musicpiece);
+                $scope.mode = "edit";
+            }
+            
+            function saveActionDisabled() {
+                return $scope.mode != "edit";
+            }
+            function onSaveAction() {
+                var navigateBack = $scope.musicpiece === null;
+                $scope.header.text = $scope.musicpiece.musicPieceName;
+                $scope.mode = "view";
+            }
+            
+            function cancelActionDisabled() {
+                return $scope.mode != "edit";
+            }
+            function onCancelAction() {
+                var navigateBack = $scope.musicpiece === null;
+                $scope.mode = "view";
             }
             
             
@@ -62,7 +96,7 @@
             function loadMusicPiece(id) {
                 MusicPieceService.getMusicPiece(id).then(function successCallback(response) {
                     $scope.musicpiece = response.data;                    
-                    $scope.header.text = $scope.musicpiece.musicPieceName;
+                    $scope.header.text = $scope.musicpiece.musicPieceName;                    
                     $scope.musicpieceLoaded = true;
                 }, function errorCallback(response) {
                     console.log(response);

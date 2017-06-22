@@ -1,0 +1,84 @@
+@import 'base';
+
+.scores {
+    
+    .mainArea {
+        
+        padding: 15px;
+                
+        .listItem {
+            overflow: hidden;
+            height: 64px;
+            
+            .col {
+                height: 100%;                
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                
+                border-style: solid;
+                border-color: $grey;
+                border-width: 1px 0px 0px 0px;
+                
+                i {
+                    font-size: 24px;
+                    margin-right: 12px;
+                }
+                span {
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+                input[type="checkbox"] {
+                    width: 24px;
+                    height: 24px;
+                    float: right;
+                }
+            }
+            
+            .col.left {
+                border-width: 1px 0px 0px 1px;
+            }
+            
+            .col.right {
+                border-width: 1px 1px 0px 0px;
+            }
+        }
+        
+        .listItem:hover {
+            .col {
+                background: #EEEEEE;
+            }
+        }
+        
+        .listItem:last-child {
+            .col {
+                border-width: 1px 0px 1px 0px;
+            }
+            
+            .col.left {
+                border-width: 1px 0px 1px 1px;
+            }
+            
+            .col.right {
+                border-width: 1px 1px 1px 0px;
+            }
+        }
+        
+        .listItem.ng-enter,
+        .listItem.ng-leave {
+            -webkit-transition:0.5s linear all;
+            transition:0.5s linear all;
+        }
+
+        .listItem.ng-enter,
+        .listItem.ng-leave.ng-leave-active {
+            opacity: 0;
+            height: 0px;
+        }
+        .listItem.ng-leave,
+        .listItem.ng-enter.ng-enter-active {
+            opacity: 1;
+            height: 64px;
+        }
+    }
+}

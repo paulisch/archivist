@@ -12,14 +12,14 @@
                     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-12">
                         <label>Titel</label>
                         <div>
-                            <span class="detailValue">{{musicpiece.musicPieceName || '-'}}</span>
+                            <span ng-show="mode == 'view'" class="detailValue">{{musicpiece.musicPieceName || '-'}}</span>
                         </div>
                     </div>
                     
                     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-12">
                         <label>Genre</label>
                         <div>
-                            <span class="detailValue">{{musicpiece.genre.genreName || '-'}}</span>
+                            <span ng-show="mode == 'view'" class="detailValue">{{musicpiece.genre.genreName || '-'}}</span>
                         </div>
                     </div>
                 
@@ -27,35 +27,34 @@
                     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-12">
                         <label>Komponist</label>
                         <div>
-                            <span class="detailValue">{{musicpiece.composer || '-'}}</span>
+                            <span ng-show="mode == 'view'" class="detailValue">{{musicpiece.composer || '-'}}</span>
                         </div>
                     </div>
                     
                     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-12">
                         <label>Schwierigkeit</label>
                         <div>
-                            <span class="detailValue">{{getDifficultyLabel(musicpiece.difficulty) || '-'}}</span>
+                            <span ng-show="mode == 'view'" class="detailValue">{{getDifficultyLabel(musicpiece.difficulty) || '-'}}</span>
                         </div>
                     </div>
                     
                     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-12">
                         <label>Archivnummer</label>
                         <div>
-                            <span class="detailValue">{{musicpiece.archiveNo || '-'}}</span>
+                            <span ng-show="mode == 'view'" class="detailValue">{{musicpiece.archiveNo || '-'}}</span>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Scores -->
-                <div class="row">
+                <div ng-show="mode == 'view'" class="row">
                     <div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <!--<label>Noten <a href="" class="manageScores">anpassen <i class="fa fa-pencil" aria-hidden="true"></i></a></label>-->
-                        <label><a href="">Noten <i class="fa fa-cog" aria-hidden="true"></i></a></label>
+                        <label><a ui-sref="scores({musicPieceId:musicpiece.musicPieceId})">Noten <i class="fa fa-cog" aria-hidden="true"></i></a></label>
                         <div>
-                            <div class="scoreItem"><span>Altsaxophon</span></div>
-                            <div class="scoreItem"><span>Flöte</span></div>
-                            <div class="scoreItem"><span>Klarinette</span></div>
-                            <div class="scoreItem"><span>Trompete</span></div>
+                            <div ng-repeat="score in musicpiece.scores track by score.scoreId" class="scoreItem">
+                                <span>{{score.instrumentNo + '. ' + score.instrument.instrumentName}}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
