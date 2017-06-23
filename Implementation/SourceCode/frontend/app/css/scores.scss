@@ -81,4 +81,31 @@
             height: 64px;
         }
     }
+    
+    .noScoresArea {
+        text-align: center;
+        
+        .bigButton {
+            margin-top: 50px;
+            display: inline-block;
+            opacity: 0.5;
+            i {
+                font-size: 256px;
+                @media (max-width: 767px) {
+                    font-size: 172px;
+                }
+            }
+            p {
+                font-size: 36px;
+                word-wrap: break-word;
+                @media (max-width: 767px) {
+                    font-size: 26px;
+                }
+            }
+        }
+        
+        .bigButton:hover {
+            opacity: 1;
+        }
+    }
 }

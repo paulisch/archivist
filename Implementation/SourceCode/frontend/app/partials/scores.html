@@ -22,4 +22,16 @@
             </div>
         </div>
     </div>
+    
+    <!--Add button if no musicpieces yet-->
+    <div ng-show="!musicpiece.scores || musicpiece.scores.length == 0" class="noScoresArea">
+        <div class="bigButton" ng-click="onAddAction()">
+            <div>
+                <i class="fa fa-plus-square" aria-hidden="true"></i>
+            </div>
+            <p>
+                Noten hinzufügen
+            </p>
+        </div>
+    </div>
 </div>

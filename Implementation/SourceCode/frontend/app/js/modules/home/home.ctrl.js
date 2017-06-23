@@ -127,7 +127,6 @@
                 return false;
             }
             function onCreateAction() {
-                //$state.go('musicpiece', { musicPieceId : 0 });
                 $state.go('musicpiece');
             }
             

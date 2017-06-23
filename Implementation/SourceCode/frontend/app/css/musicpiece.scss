@@ -7,7 +7,7 @@
             padding: 0;
             font-weight: lighter;
             font-size: 18px;
-            color: $dark-grey;
+            /*color: $dark-grey;*/
             
             .manageScores {
                 margin-left: 8px;
@@ -19,8 +19,22 @@
             }
         }
         
-        .detailValue {
+        .detailValue, .editValue {
+            display: inline-block;
             font-size: 24px;
+            height: 40px;
+        }
+        
+        .detailValue.ng-hide, .editValue.ng-hide {
+             display: none !important;
+        }
+        
+        input.editValue, select.editValue {
+            width: auto;
+        }
+        
+        p.help-block {
+            margin-bottom: 0;
         }
         
         .col {
@@ -29,21 +43,30 @@
         }
         
         .scoreItem {
+            margin-top: 4px;
+            margin-right: 4px;
+            background-image: url("../img/score.png");
+            background-size:     cover;
+            background-repeat:   no-repeat;
+            background-position: center center;
+        }
+        .addScoreItem {
+            margin-top: 4px;
+            margin-left: -4px;
+            i {
+                font-size: 58px;
+            }
+        }
+        .scoreItem, .addScoreItem {
             display: inline-block;
             overflow: hidden;
             text-overflow: ellipsis;
             
             height: 100px;
             width: 100px;
-            margin: 1px;
             
             /*line-height: 100px;
             text-align: center;*/
-            
-            background-image: url("../img/score.png");
-            background-size:     cover;
-            background-repeat:   no-repeat;
-            background-position: center center;
             
             border-color: black;
             border-style: solid;
@@ -53,7 +76,7 @@
                 
                 /*display: inline-block;
                 vertical-align: middle;
-                line-height: normal;*/
+                line-height: normal;*/                
                 
                 height: 100%;
                 
@@ -71,7 +94,7 @@
             }
         }
         
-        .scoreItem:hover {
+        .scoreItem:hover, .addScoreItem:hover {
             -webkit-transform:scale(1.05); /* Safari and Chrome */
                 -moz-transform:scale(1.05); /* Firefox */
                 -ms-transform:scale(1.05); /* IE 9 */

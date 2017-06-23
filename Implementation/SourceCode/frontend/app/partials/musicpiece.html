@@ -6,58 +6,80 @@
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="mainArea">
-               
-                <div class="row">
-                    <!-- Titel, Genre -->
-                    <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                        <label>Titel</label>
-                        <div>
-                            <span ng-show="mode == 'view'" class="detailValue">{{musicpiece.musicPieceName || '-'}}</span>
+                <form name="MusicPieceForm" novalidate>
+                   
+                    <div class="row">
+                        <!-- Titel, Genre -->
+                        <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group" ng-class="{ 'has-error': MusicPieceForm.titleInput.$dirty && MusicPieceForm.titleInput.$error.required }">
+                            <label class="control-label">Titel</label>
+                            <div>
+                                <span ng-show="mode == 'view'" class="detailValue">{{musicpiece.musicPieceName || '-'}}</span>
+                                <input id="titleInput" name="titleInput" ng-show="mode == 'edit'" type="text" ng-model="musicpieceForEditing.musicPieceName" class="editValue form-control" maxlength="45" required>
+                                <p class="help-block" ng-show="MusicPieceForm.titleInput.$dirty && MusicPieceForm.titleInput.$error.required">Eingabe erforderlich!</p>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                        <label>Genre</label>
-                        <div>
-                            <span ng-show="mode == 'view'" class="detailValue">{{musicpiece.genre.genreName || '-'}}</span>
-                        </div>
-                    </div>
-                
-                    <!-- Komponist, Schwierigkeit, Archivnummer -->
-                    <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                        <label>Komponist</label>
-                        <div>
-                            <span ng-show="mode == 'view'" class="detailValue">{{musicpiece.composer || '-'}}</span>
-                        </div>
-                    </div>
-                    
-                    <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                        <label>Schwierigkeit</label>
-                        <div>
-                            <span ng-show="mode == 'view'" class="detailValue">{{getDifficultyLabel(musicpiece.difficulty) || '-'}}</span>
-                        </div>
-                    </div>
-                    
-                    <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                        <label>Archivnummer</label>
-                        <div>
-                            <span ng-show="mode == 'view'" class="detailValue">{{musicpiece.archiveNo || '-'}}</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Scores -->
-                <div ng-show="mode == 'view'" class="row">
-                    <div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <!--<label>Noten <a href="" class="manageScores">anpassen <i class="fa fa-pencil" aria-hidden="true"></i></a></label>-->
-                        <label><a ui-sref="scores({musicPieceId:musicpiece.musicPieceId})">Noten <i class="fa fa-cog" aria-hidden="true"></i></a></label>
-                        <div>
-                            <div ng-repeat="score in musicpiece.scores track by score.scoreId" class="scoreItem">
-                                <span>{{score.instrumentNo + '. ' + score.instrument.instrumentName}}</span>
+
+                        <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group" ng-class="{ 'has-error': MusicPieceForm.genreSelect.$dirty && MusicPieceForm.genreSelect.$error.required }">
+                            <label class="control-label">Genre</label>
+                            <div>
+                                <span ng-show="mode == 'view'" class="detailValue">{{musicpiece.genre.genreName || '-'}}</span>
+                                <select id="genreSelect" name="genreSelect" ng-show="mode == 'edit'" ng-model="musicpieceForEditing.genre" ng-options="g.genreName for g in genres track by g.genreId" class="editValue form-control" required></select>
+                                <p class="help-block" ng-show="MusicPieceForm.genreSelect.$dirty && MusicPieceForm.genreSelect.$error.required">Eingabe erforderlich!</p>
                             </div>
                         </div>
                     </div>
-                </div>
+
+                    <div class="row">
+                        <!-- Komponist, Schwierigkeit -->
+                        <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group" ng-class="{ 'has-error': MusicPieceForm.composerInput.$dirty && MusicPieceForm.composerInput.$error.required }">
+                            <label class="control-label">Komponist</label>
+                            <div>
+                                <span ng-show="mode == 'view'" class="detailValue">{{musicpiece.composer || '-'}}</span>
+                                <input id="composerInput" name="composerInput" ng-show="mode == 'edit'" ng-model="musicpieceForEditing.composer" class="editValue form-control" maxlength="45">
+                                <p class="help-block" ng-show="MusicPieceForm.composerInput.$dirty && MusicPieceForm.composerInput.$error.required">Eingabe erforderlich!</p>
+                            </div>
+                        </div>
+
+                        <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group" ng-class="{ 'has-error': MusicPieceForm.difficultySelect.$dirty && MusicPieceForm.difficultySelect.$error.required }">
+                            <label class="control-label">Schwierigkeit</label>
+                            <div>
+                                <span ng-show="mode == 'view'" class="detailValue">{{getDifficultyLabel(musicpiece.difficulty) || '-'}}</span>
+                                <select id="difficultySelect" name="difficultySelect" ng-show="mode == 'edit'" ng-model="musicpieceForEditing.selectedDifficulty" ng-options="d.label for d in difficulties track by d.id" class="editValue form-control" required></select>
+                                <p class="help-block" ng-show="MusicPieceForm.difficultySelect.$dirty && MusicPieceForm.difficultySelect.$error.required">Eingabe erforderlich!</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <!-- Archivnummer -->
+                        <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group" ng-class="{ 'has-error': MusicPieceForm.archiveNoInput.$dirty && MusicPieceForm.archiveNoInput.$error.required }">
+                            <label class="control-label">Archivnummer</label>
+                            <div>
+                                <span ng-show="mode == 'view'" class="detailValue">{{musicpiece.archiveNo || '-'}}</span>
+                                <input id="archiveNoInput" name="archiveNoInput" ng-show="mode == 'edit'" ng-model="musicpieceForEditing.archiveNo" class="editValue form-control" maxlength="45">
+                                <p class="help-block" ng-show="MusicPieceForm.archiveNoInput.$dirty && MusicPieceForm.archiveNoInput.$error.required">Eingabe erforderlich!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Scores -->
+                    <div ng-show="mode == 'view'" class="row">
+                        <div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <!--<label>Noten <a href="" class="manageScores">anpassen <i class="fa fa-pencil" aria-hidden="true"></i></a></label>-->
+                            <label><a ui-sref="scores({musicPieceId:musicpiece.musicPieceId})">Noten <i class="fa fa-cog" aria-hidden="true"></i></a></label>
+                            <div>
+                                <div ng-repeat="score in musicpiece.scores track by score.scoreId" class="scoreItem">
+                                    <span>{{score.instrumentNo + '. ' + score.instrument.instrumentName}}</span>
+                                </div>
+                                <a ui-sref="addscore({musicPieceId:musicpiece.musicPieceId})">
+                                    <div class="addScoreItem">
+                                        <span><i class="fa fa-plus" aria-hidden="true"></i></span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

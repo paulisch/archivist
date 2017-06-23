@@ -40,6 +40,13 @@
                 templateUrl: 'partials/scores.html',
                 controller: 'ScoresCtrl',
                 params : { musicPieceId: null }
+            })
+            .state('addscore',
+            {
+                url: '/addscore/:musicPieceId',
+                templateUrl: 'partials/addscore.html',
+                controller: 'AddScoreCtrl',
+                params : { musicPieceId: null }
             });
     }]);
 })(angular);

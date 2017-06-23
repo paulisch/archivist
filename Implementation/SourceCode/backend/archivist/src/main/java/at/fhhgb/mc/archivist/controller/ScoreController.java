@@ -6,6 +6,7 @@ import java.util.LinkedList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -48,7 +49,14 @@ public class ScoreController {
 		current.getInstrument().setScores(null);		
 	}
 
-	
+	@RequestMapping(method = RequestMethod.DELETE, path = "/delete/{scoreIds}")
+	public void delete(@PathVariable Integer[] scoreIds) {
+		if(scoreIds != null && scoreIds.length > 0) {
+			for(Integer id : scoreIds) {
+				repository.delete(id);
+			}
+		}
+	}
 	
 	
 }
