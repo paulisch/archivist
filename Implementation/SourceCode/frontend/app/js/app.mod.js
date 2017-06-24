@@ -8,6 +8,7 @@
       'archivist.error',
       'archivist.home',
       'archivist.musicpiece',
-      'archivist.scores'
+      'archivist.scores',
+      'ngFileUpload'
     ]);
 })(angular);

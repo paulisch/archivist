@@ -12,6 +12,7 @@
             $scope.onCheck = onCheck;
             $scope.onAddAction = onAddAction;
             $scope.getScoreName = MainService.getScoreName;
+            $scope.getScoreHref = ScoresService.getScoreHref;
             
             if ($scope.musicPieceId) {
                 loadMusicPiece($scope.musicPieceId);

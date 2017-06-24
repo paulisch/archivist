@@ -15,5 +15,34 @@
             width: auto;
         }
         
+        .drop-box {
+            background-color: #FFFFFF;
+            padding: 100px 20px;
+            margin-top: 16px;
+            margin-bottom: 4px;
+            
+            outline: 2px dashed #92b0b3;
+            outline-offset: 0px;
+            
+            -webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;
+                    transition: outline-offset .15s ease-in-out, background-color .15s linear;
+            
+            text-align: center;
+            font-size: 18px;
+            
+            i {
+                font-size: 96px;
+                margin-bottom: 40px;
+            }
+        }
+        .drop-box.has-error {
+            outline: 2px dashed #a94442;
+            color: #a94442;
+        }
+        .dragover {
+            outline-offset: -20px;
+            outline-color: #92b0b3;
+            background-color: #C8DADF;
+        }
     }
 }

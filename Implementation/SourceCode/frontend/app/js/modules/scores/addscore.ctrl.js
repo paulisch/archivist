@@ -84,12 +84,6 @@
                     }
                 };
                 
-                //ScoresService.addScore(score).then(function successCallback(response) {
-                //    onCancelAction();
-                //}, function errorCallback(response) {
-                //    console.log(response);
-                //});
-                
                 ScoresService.uploadScore(score, $scope.file).then(function successCallback(response) {
                     onCancelAction();
                 }, function errorCallback(response) {

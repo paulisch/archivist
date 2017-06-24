@@ -26,15 +26,20 @@ public class FileSystemStorageService implements StorageService {
 
     @Override
     public void store(MultipartFile file) {
-        try {
+    	store(file, file.getOriginalFilename());
+    }
+    
+    @Override
+	public void store(MultipartFile file, String destinationFilename) {
+    	try {
             if (file.isEmpty()) {
                 throw new StorageException("Failed to store empty file " + file.getOriginalFilename());
             }
-            Files.copy(file.getInputStream(), this.rootLocation.resolve(file.getOriginalFilename()));
+            Files.copy(file.getInputStream(), this.rootLocation.resolve(destinationFilename));
         } catch (IOException e) {
             throw new StorageException("Failed to store file " + file.getOriginalFilename(), e);
         }
-    }
+	}
 
     @Override
     public Stream<Path> loadAll() {
@@ -83,4 +88,13 @@ public class FileSystemStorageService implements StorageService {
             throw new StorageException("Could not initialize storage", e);
         }
     }
+
+	@Override
+	public void delete(String filename) {
+		try {
+			FileSystemUtils.deleteRecursively(loadAsResource(filename).getFile());
+		} catch (IOException e) {
+			throw new StorageException("Could not delete file" + filename, e);
+		}
+	}
 }

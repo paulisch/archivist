@@ -9,7 +9,7 @@
                 <form name="ScoreForm" novalidate>
                     <div class="row">
                         <!-- Stimme -->
-                        <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group" ng-class="{ 'has-error': (ScoreForm.instrumentNoSelect.$dirty && ScoreForm.instrumentNoSelect.$error.required) || (ScoreForm.instrumentSelect.$dirty && ScoreForm.instrumentSelect.$error.required) }">
+                        <div class="col col-lg-6 col-md-7 col-sm-8 col-xs-12 form-group" ng-class="{ 'has-error': (ScoreForm.instrumentNoSelect.$dirty && ScoreForm.instrumentNoSelect.$error.required) || (ScoreForm.instrumentSelect.$dirty && ScoreForm.instrumentSelect.$error.required) }">
                             <label class="control-label">Stimme</label>
                             <div>
                                 <select id="instrumentNoSelect" name="instrumentNoSelect" ng-model="instrumentNo" ng-options="(no + '.') for no in instrumentNos track by no" class="editValue form-control" required></select>
@@ -20,12 +20,21 @@
                     </div>
                     
                     <div class="row">
-                        <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group" ng-class="{ 'has-error': ScoreForm.fileInput.$dirty && ScoreForm.fileInput.$error.required }">
+                        <div class="col col-lg-6 col-md-7 col-sm-8 col-xs-12 form-group" ng-class="{ 'has-error': ScoreForm.fileInput.$dirty && (ScoreForm.fileInput.$error.required || ScoreForm.fileInput.$error.pattern) }">
                             <label class="control-label">Noten</label>
-                            <div>
+                            <div id="fileInput" name="fileInput" ngf-drop ngf-select ng-model="file" class="drop-box" ngf-drag-over-class="'dragover'" ngf-multiple="false" ngf-allow-dir="true" accept="application/pdf" ngf-pattern="'.pdf'" ng-required="true" ng-class="{ 'has-error': ScoreForm.fileInput.$dirty && (ScoreForm.fileInput.$error.required || ScoreForm.fileInput.$error.pattern) }">
+                                <i class="fa fa-upload" aria-hidden="true"></i>
+                                <div>PDF-Datei hierher ziehen oder hier klicken...</div>
+                            </div>
+                            <div ngf-no-file-drop>Drag/Drop nicht unterstützt!</div>
+                            <div ng-if="file">{{file.name}}</div>
+                            <p class="help-block" ng-show="ScoreForm.fileInput.$dirty && ScoreForm.fileInput.$error.required && !ScoreForm.fileInput.$error.pattern">Datei auswählen!</p>
+                            <p class="help-block" ng-show="ScoreForm.fileInput.$dirty && ScoreForm.fileInput.$error.pattern">Datei muss vom Typ PDF sein!</p>
+                            
+                            <!--<div>
                                 <input id="fileInput" name="fileInput" type="file" accept="application/pdf" class="form-control-file" ng-model="file" onchange="angular.element(this).scope().setFile(this)" required>
                                 <p class="help-block" ng-show="ScoreForm.fileInput.$dirty && ScoreForm.fileInput.$error.required">Datei auswählen!</p>
-                            </div>
+                            </div>-->
                         </div>
                     </div>
                 </form>

@@ -13,10 +13,6 @@
           return MainService.httpRequest('DELETE', '/scores/delete/' + idsAsStr);
       }
       
-      function addScore(score) {
-          return MainService.httpRequest('POST', '/scores/add', score);
-      }
-      
       function uploadScore(score, file) {
           var formData = new FormData();
           
@@ -48,11 +44,15 @@
           });
       }
       
+      function getScoreHref(score) {
+          return MainService.buildUrl('/scores/files/' + score.fileName);
+      }
+      
       //Return service object
       return {
           deleteScores : deleteScores,
-          addScore : addScore,
-          uploadScore : uploadScore
+          uploadScore : uploadScore,
+          getScoreHref : getScoreHref
       };
     }
   ]);

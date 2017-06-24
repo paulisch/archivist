@@ -68,9 +68,11 @@
                             <!--<label>Noten <a href="" class="manageScores">anpassen <i class="fa fa-pencil" aria-hidden="true"></i></a></label>-->
                             <label><a ui-sref="scores({musicPieceId:musicpiece.musicPieceId})">Noten <i class="fa fa-cog" aria-hidden="true"></i></a></label>
                             <div>
-                                <div ng-repeat="score in musicpiece.scores track by score.scoreId" class="scoreItem">
-                                    <span>{{getScoreName(score, musicpiece.scores)}}</span>
-                                </div>
+                                <a ng-repeat="score in musicpiece.scores track by score.scoreId" ng-href="{{getScoreHref(score)}}">
+                                    <div class="scoreItem">
+                                        <span>{{getScoreName(score, musicpiece.scores)}}</span>
+                                    </div>
+                                </a>
                                 <a ui-sref="addscore({musicPieceId:musicpiece.musicPieceId})">
                                     <div class="addScoreItem">
                                         <span><i class="fa fa-plus" aria-hidden="true"></i></span>
