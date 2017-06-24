@@ -1,4 +1,4 @@
-<div ng-show="musicpieceLoaded" class="addscore container-fluid animate-linear">
+<div ng-show="dataLoaded" class="addscore container-fluid animate-linear">
    
     <div class="row" actionbar header="header" action-buttons="actionButtons"></div>
     
@@ -6,9 +6,29 @@
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="mainArea">
-               
-                
-                
+                <form name="ScoreForm" novalidate>
+                    <div class="row">
+                        <!-- Stimme -->
+                        <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group" ng-class="{ 'has-error': (ScoreForm.instrumentNoSelect.$dirty && ScoreForm.instrumentNoSelect.$error.required) || (ScoreForm.instrumentSelect.$dirty && ScoreForm.instrumentSelect.$error.required) }">
+                            <label class="control-label">Stimme</label>
+                            <div>
+                                <select id="instrumentNoSelect" name="instrumentNoSelect" ng-model="instrumentNo" ng-options="(no + '.') for no in instrumentNos track by no" class="editValue form-control" required></select>
+                                <select id="instrumentSelect" name="instrumentSelect" ng-model="instrument" ng-options="getInstrumentLabel(i) for i in instruments track by i.instrumentId" class="editValue form-control" required></select>
+                                <p class="help-block" ng-show="(ScoreForm.instrumentNoSelect.$dirty && ScoreForm.instrumentNoSelect.$error.required) || (ScoreForm.instrumentSelect.$dirty && ScoreForm.instrumentSelect.$error.required)">Eingabe erforderlich!</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group" ng-class="{ 'has-error': ScoreForm.fileInput.$dirty && ScoreForm.fileInput.$error.required }">
+                            <label class="control-label">Noten</label>
+                            <div>
+                                <input id="fileInput" name="fileInput" type="file" accept="application/pdf" class="form-control-file" ng-model="file" onchange="angular.element(this).scope().setFile(this)" required>
+                                <p class="help-block" ng-show="ScoreForm.fileInput.$dirty && ScoreForm.fileInput.$error.required">Datei auswählen!</p>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

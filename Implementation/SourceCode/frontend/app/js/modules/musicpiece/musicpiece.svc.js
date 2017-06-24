@@ -20,12 +20,17 @@
           return MainService.httpRequest('DELETE', '/musicpieces/delete/' + musicPieceId);
       }
       
+      function getInstruments() {
+          return MainService.httpRequest('GET', '/instruments/get');
+      }
+      
       //Return service object
       return {
           getMusicPiece : getMusicPiece,
           getGenres : getGenres,
           addOrUpdateMusicpiece : addOrUpdateMusicpiece,
-          deleteMusicPiece : deleteMusicPiece
+          deleteMusicPiece : deleteMusicPiece,
+          getInstruments : getInstruments
       };
     }
   ]);

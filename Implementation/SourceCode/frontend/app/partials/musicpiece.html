@@ -69,7 +69,7 @@
                             <label><a ui-sref="scores({musicPieceId:musicpiece.musicPieceId})">Noten <i class="fa fa-cog" aria-hidden="true"></i></a></label>
                             <div>
                                 <div ng-repeat="score in musicpiece.scores track by score.scoreId" class="scoreItem">
-                                    <span>{{score.instrumentNo + '. ' + score.instrument.instrumentName}}</span>
+                                    <span>{{getScoreName(score, musicpiece.scores)}}</span>
                                 </div>
                                 <a ui-sref="addscore({musicPieceId:musicpiece.musicPieceId})">
                                     <div class="addScoreItem">

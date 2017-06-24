@@ -2,8 +2,8 @@
     'use strict';
     var ngmod = angular.module('archivist.musicpiece');
     ngmod.controller('MusicPieceCtrl', [
-        '$scope', 'MusicPieceService', 'AppConstants', '$stateParams', '$filter', '$state', '$timeout',
-        function ($scope, MusicPieceService, AppConstants, $stateParams, $filter, $state, $timeout) {
+        '$scope', 'MusicPieceService', 'MainService', 'AppConstants', '$stateParams', '$filter', '$state', '$timeout',
+        function ($scope, MusicPieceService, MainService, AppConstants, $stateParams, $filter, $state, $timeout) {
             
             //Init
             $scope.musicPieceId = $stateParams.musicPieceId;
@@ -11,6 +11,8 @@
             $scope.musicpiece = null;
             $scope.musicpieceForEditing = null;
             $scope.musicpieceLoaded = false;
+            $scope.getDifficultyLabel = MainService.getDifficultyLabel;
+            $scope.getScoreName = MainService.getScoreName;
             
             loadGenres();
             
@@ -60,7 +62,6 @@
                     hidden: function() { return $scope.mode != "edit"; }
                 }
             ];
-            $scope.getDifficultyLabel = getDifficultyLabel;
             
             //Action bar methods
             function deleteActionDisabled() {
@@ -79,7 +80,7 @@
             }
             function onEditAction() {
                 $scope.musicpieceForEditing = angular.extend({ }, $scope.musicpiece);
-                $scope.musicpieceForEditing.selectedDifficulty = findByProperty(AppConstants.difficulties, "id", $scope.musicpiece.difficulty)[0];
+                $scope.musicpieceForEditing.selectedDifficulty = MainService.findByProperty(AppConstants.difficulties, "id", $scope.musicpiece.difficulty)[0];
                 $scope.mode = "edit";
                 $('#titleInput').focus();
             }
@@ -94,7 +95,6 @@
                 $scope.MusicPieceForm.difficultySelect.$setDirty();
                 $scope.MusicPieceForm.archiveNoInput.$setDirty();
                 
-                //Post form if valid
                 if (!$scope.MusicPieceForm.$valid) {
                     return;
                 }
@@ -109,13 +109,17 @@
                 }
                 
                 MusicPieceService.addOrUpdateMusicpiece($scope.musicpiece).then(function successCallback(response) {
-                    
+                    if (isNewMusicpiece) {
+                        //$state.go(".", { musicPieceId: $scope.musicpiece.musicPieceId }, { notify: false, location: 'replace' } );
+                        $state.go("scores", { musicPieceId : response.data.musicPieceId }, { location: 'replace' });
+                    }
                 }, function errorCallback(response) {
-                    console.log(response);
-                }).finally(function() {
                     if (isNewMusicpiece) {
                         goHome();
                     }
+                    console.log(response);
+                }).finally(function() {
+                    
                 });
             }
             
@@ -152,7 +156,7 @@
                     $scope.genres = response.data;
                     for (var i=0; i<$scope.genres.length; i++) {
                         if ($scope.genres[i].genre) {
-                            $scope.genres[i].genre = findByProperty($scope.genres, "genreId", $scope.genres[i].genre.genreId)[0];
+                            $scope.genres[i].genre = MainService.findByProperty($scope.genres, "genreId", $scope.genres[i].genre.genreId)[0];
                         }
                     }
                     $scope.genres = $filter('orderBy')($scope.genres, ['genreName']);
@@ -166,27 +170,6 @@
                 $state.go('home', null, { location: 'replace' });
             }
             
-            function getDifficultyLabel(difficulty) {
-                var difficulties = AppConstants.difficulties;
-                var result = null;
-                for(var i=0; i<difficulties.length; i++) {
-                    var diff = difficulties[i];
-                    if (diff.id == difficulty) {
-                        result = diff.label;
-                    }
-                }
-                return result;
-            }
             
-            function findByProperty(array, property, compareValue) {
-                var result = [];
-                for(var i=0; i<array.length; i++) {
-                    var elem = array[i];
-                    if (elem[property] == compareValue) {
-                        result.push(elem);
-                    }
-                }
-                return result;
-            }
     }]);
 })(angular);

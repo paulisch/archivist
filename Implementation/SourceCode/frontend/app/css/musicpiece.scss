@@ -2,6 +2,9 @@
 
 .musicpiece {
     .mainArea {
+        
+        padding: 15px;
+        
         label {
             margin: 6px 0 0 0;
             padding: 0;
@@ -22,7 +25,7 @@
         .detailValue, .editValue {
             display: inline-block;
             font-size: 24px;
-            height: 40px;
+            height: 44px;
         }
         
         .detailValue.ng-hide, .editValue.ng-hide {
@@ -61,6 +64,7 @@
             display: inline-block;
             overflow: hidden;
             text-overflow: ellipsis;
+            word-wrap: break-word;
             
             height: 100px;
             width: 100px;
@@ -86,8 +90,8 @@
                 flex-direction: column;
                 
                 overflow: hidden;
-                word-wrap: break-word;
                 text-overflow: ellipsis;
+                word-wrap: break-word;
                 text-align: center;
                 
                 font-weight: bold;

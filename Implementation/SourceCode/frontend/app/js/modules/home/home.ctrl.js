@@ -2,8 +2,8 @@
     'use strict';
     var ngmod = angular.module('archivist.home');
     ngmod.controller('HomeCtrl', [
-        '$scope', 'HomeService', 'AppConstants', '$state',
-        function ($scope, HomeService, AppConstants, $state) {
+        '$scope', 'HomeService', 'MainService', 'AppConstants', '$state',
+        function ($scope, HomeService, MainService, AppConstants, $state) {
             
             //Init
             $scope.musicpieces = null;
@@ -12,7 +12,7 @@
             $scope.searchText = "";
             $scope.onCreateAction = onCreateAction;
             $scope.onSearch = onSearch;
-            $scope.getDifficultyLabel = getDifficultyLabel;
+            $scope.getDifficultyLabel = MainService.getDifficultyLabel;
             $scope.getOrderBy = getOrderBy;
             $scope.onCheck = onCheck;
             $scope.filterFunction = function(musicPiece)
@@ -164,18 +164,6 @@
                         if ($scope.sort[property].enabled) {
                             result = ($scope.sort[property].ascending ? "" : "-") + $scope.sort[property].property;
                         }
-                    }
-                }
-                return result;
-            }
-            
-            function getDifficultyLabel(difficulty) {
-                var difficulties = AppConstants.difficulties;
-                var result = null;
-                for(var i=0; i<difficulties.length; i++) {
-                    var diff = difficulties[i];
-                    if (diff.id == difficulty) {
-                        result = diff.label;
                     }
                 }
                 return result;

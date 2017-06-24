@@ -33,15 +33,16 @@ public class MusicPieceController {
 		Iterator<Musicpiece> it = repository.findAll().iterator();
 		while(it.hasNext()) {
 			Musicpiece current = it.next();
-			prepareForSerialization(current);			
+			prepareForSerialization(current);
 			result.add(current);
 		}
 		return result;
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, path = "/add")
-	public void addOrUpdate(@RequestBody Musicpiece musicPiece) {
+	public Musicpiece addOrUpdate(@RequestBody Musicpiece musicPiece) {
 		repository.save(musicPiece);
+		return musicPiece;
 	}
 	
 	

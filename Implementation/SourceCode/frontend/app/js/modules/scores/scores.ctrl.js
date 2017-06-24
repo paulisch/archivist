@@ -2,8 +2,8 @@
     'use strict';
     var ngmod = angular.module('archivist.scores');
     ngmod.controller('ScoresCtrl', [
-        '$scope', 'MusicPieceService', 'ScoresService', 'AppConstants', '$stateParams', '$state',
-        function ($scope, MusicPieceService, ScoresService, AppConstants, $stateParams, $state) {
+        '$scope', 'MusicPieceService', 'ScoresService', 'MainService', 'AppConstants', '$stateParams', '$state',
+        function ($scope, MusicPieceService, ScoresService, MainService, AppConstants, $stateParams, $state) {
             
             //Init
             $scope.musicPieceId = $stateParams.musicPieceId;
@@ -11,6 +11,7 @@
             $scope.musicpieceLoaded = false;
             $scope.onCheck = onCheck;
             $scope.onAddAction = onAddAction;
+            $scope.getScoreName = MainService.getScoreName;
             
             if ($scope.musicPieceId) {
                 loadMusicPiece($scope.musicPieceId);

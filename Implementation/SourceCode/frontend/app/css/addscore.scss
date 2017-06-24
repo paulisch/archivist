@@ -3,5 +3,17 @@
 .addscore {
     .mainArea {
         
+        padding: 15px;
+        
+        .editValue {
+            display: inline-block;
+            font-size: 24px;
+            height: 44px;
+        }
+        
+        input.editValue, select.editValue {
+            width: auto;
+        }
+        
     }
 }
