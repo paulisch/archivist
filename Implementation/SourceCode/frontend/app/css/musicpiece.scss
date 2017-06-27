@@ -33,7 +33,9 @@
         }
         
         input.editValue, select.editValue {
-            width: auto;
+            @media (min-width: 768px) {
+                width: auto;
+            }
         }
         
         p.help-block {

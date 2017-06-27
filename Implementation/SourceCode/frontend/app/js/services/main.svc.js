@@ -8,7 +8,7 @@
           
           var rootUrl = "http://localhost:8080";
           var baseUrl = rootUrl + "/archivist/api";
-          baseUrl = "/archivist/api";
+          //baseUrl = "/archivist/api";
           
           function buildUrl(url) {
               return baseUrl + url;

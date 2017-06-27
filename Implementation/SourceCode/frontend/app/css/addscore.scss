@@ -12,7 +12,10 @@
         }
         
         input.editValue, select.editValue {
-            width: auto;
+            margin-top: 4px;
+            /*@media (min-width: 768px) {*/
+                width: auto;
+            /*}*/
         }
         
         .drop-box {
