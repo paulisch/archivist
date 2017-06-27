@@ -23,11 +23,12 @@
                         <div class="col col-lg-6 col-md-7 col-sm-8 col-xs-12 form-group" ng-class="{ 'has-error': ScoreForm.fileInput.$dirty && (ScoreForm.fileInput.$error.required || ScoreForm.fileInput.$error.pattern) }">
                             <label class="control-label">Noten</label>
                             <div id="fileInput" name="fileInput" ngf-drop ngf-select ng-model="file" class="drop-box" ngf-drag-over-class="'dragover'" ngf-multiple="false" ngf-allow-dir="true" accept="application/pdf" ngf-pattern="'.pdf'" ng-required="true" ng-class="{ 'has-error': ScoreForm.fileInput.$dirty && (ScoreForm.fileInput.$error.required || ScoreForm.fileInput.$error.pattern) }">
-                                <i class="fa fa-upload" aria-hidden="true"></i>
-                                <div>PDF-Datei hierher ziehen oder hier klicken...</div>
+                                <i ng-if="!file" class="fa fa-upload" aria-hidden="true"></i>
+                                <i ng-if="file" class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                                <div ng-if="!file">PDF-Datei hierher ziehen oder hier klicken...</div>
+                                <div ng-if="file">{{file.name}}</div>
                             </div>
                             <div ngf-no-file-drop>Drag/Drop nicht unterstützt!</div>
-                            <div ng-if="file">{{file.name}}</div>
                             <p class="help-block" ng-show="ScoreForm.fileInput.$dirty && ScoreForm.fileInput.$error.required && !ScoreForm.fileInput.$error.pattern">Datei auswählen!</p>
                             <p class="help-block" ng-show="ScoreForm.fileInput.$dirty && ScoreForm.fileInput.$error.pattern">Datei muss vom Typ PDF sein!</p>
                             

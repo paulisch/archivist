@@ -69,11 +69,14 @@
                 return $scope.mode != "view";
             }
             function onDeleteAction() {
-                MusicPieceService.deleteMusicPiece($scope.musicpiece.musicPieceId).then(function successCallback(response) {
-                    goHome();
-                }, function errorCallback(response) {
-                    console.log(response);
-                });
+                var deleteConfirmed = confirm("Wollen Sie das Musikstück '"+$scope.musicpiece.musicPieceName+"' wirklich löschen?");
+                if (deleteConfirmed) {
+                    MusicPieceService.deleteMusicPiece($scope.musicpiece.musicPieceId).then(function successCallback(response) {
+                        goHome();
+                    }, function errorCallback(response) {
+                        console.log(response);
+                    });
+                }
             }
             
             function editActionDisabled() {

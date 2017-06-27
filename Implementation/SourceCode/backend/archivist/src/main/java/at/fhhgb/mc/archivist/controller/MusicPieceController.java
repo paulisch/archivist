@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 import at.fhhgb.mc.archivist.model.Musicpiece;
 import at.fhhgb.mc.archivist.model.Score;
 import at.fhhgb.mc.archivist.repository.MusicPieceRepository;
+import at.fhhgb.mc.archivist.repository.ScoreRepository;
+import at.fhhgb.mc.archivist.storage.StorageService;
 
 @RestController
 @RequestMapping("/${api.path}/musicpieces")
@@ -25,6 +27,12 @@ public class MusicPieceController {
 
 	@Autowired
 	private MusicPieceRepository repository;
+	
+	@Autowired
+	private ScoreRepository repScore;
+	
+	@Autowired
+	private StorageService storageService;
 	
 	@RequestMapping(method = RequestMethod.GET, path = "/get")
 	public Collection<Musicpiece> get(@RequestParam(required = false, defaultValue = "") String search) {
@@ -76,7 +84,9 @@ public class MusicPieceController {
 	public void delete(@PathVariable Integer[] musicPieceIds) {
 		if(musicPieceIds != null && musicPieceIds.length > 0) {
 			for(Integer id : musicPieceIds) {
-				repository.delete(id);
+				Musicpiece p = repository.findOne(id);
+				ScoreController.deleteScores(storageService, repScore, p);
+				repository.delete(p);
 			}
 		}
 	}

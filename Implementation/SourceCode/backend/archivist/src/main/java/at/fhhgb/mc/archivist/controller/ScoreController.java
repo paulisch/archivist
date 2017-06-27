@@ -77,15 +77,7 @@ public class ScoreController {
 	public void delete(@PathVariable Integer[] scoreIds) {
 		if(scoreIds != null && scoreIds.length > 0) {
 			for(Integer id : scoreIds) {
-				Score s = repository.findOne(id);
-				if(s != null) {
-					try {
-						storageService.delete(s.getFileName());
-					}
-					catch(StorageFileNotFoundException e) {
-					}
-					repository.delete(id);
-				}
+				deleteScore(storageService, repository, id);
 			}
 		}
 	}
@@ -129,6 +121,24 @@ public class ScoreController {
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\""+file.getFilename()+"\"")
                 .body(file);
     }
+	
+	public static void deleteScore(StorageService storageService, ScoreRepository repository, Integer id) {
+		Score s = repository.findOne(id);
+		try {
+			storageService.delete(s.getFileName());
+		}
+		catch(StorageFileNotFoundException e) {
+		}
+		repository.delete(id);
+	}
+	
+	public static void deleteScores(StorageService storageService, ScoreRepository repository, Musicpiece p) {
+		if (p.getScores() != null && p.getScores().size() > 0) {
+			for(Score s : p.getScores()) {
+				deleteScore(storageService, repository, s.getScoreId());
+			}
+		}
+	}
 	
 	@SuppressWarnings("rawtypes")
 	@ExceptionHandler(StorageFileNotFoundException.class)
