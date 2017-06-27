@@ -55,7 +55,7 @@
         }
         .addScoreItem {
             margin-top: 4px;
-            margin-left: -4px;
+            /*margin-left: -4px;*/
             i {
                 font-size: 58px;
             }
@@ -63,38 +63,34 @@
         .scoreItem, .addScoreItem {
             display: inline-block;
             overflow: hidden;
-            text-overflow: ellipsis;
-            word-wrap: break-word;
             
-            height: 100px;
-            width: 100px;
-            
-            /*line-height: 100px;
-            text-align: center;*/
+            height: 120px;
+            width: 120px;
             
             border-color: black;
             border-style: solid;
             border-width: 1px;
             
-            span {
-                
-                /*display: inline-block;
-                vertical-align: middle;
-                line-height: normal;*/                
-                
+            div {
                 height: 100%;
+                width: 100%;
                 
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 flex-direction: column;
-                
                 overflow: hidden;
-                text-overflow: ellipsis;
-                word-wrap: break-word;
-                text-align: center;
                 
-                font-weight: bold;
+                * {
+                    display: block;
+                    max-width: 100%;
+                    min-width: 50%;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    text-align: center;                    
+                    word-wrap: break-word;
+                    font-weight: bold;
+                }
             }
         }
         

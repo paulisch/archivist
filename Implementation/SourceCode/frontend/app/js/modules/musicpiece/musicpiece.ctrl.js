@@ -109,7 +109,7 @@
                     $scope.mode = "view";
                 }
                 
-                MusicPieceService.addOrUpdateMusicpiece($scope.musicpiece).then(function successCallback(response) {
+               MusicPieceService.addOrUpdateMusicpiece($scope.musicpiece).then(function successCallback(response) {
                     if (isNewMusicpiece) {
                         //$state.go(".", { musicPieceId: $scope.musicpiece.musicPieceId }, { notify: false, location: 'replace' } );
                         $state.go("scores", { musicPieceId : response.data.musicPieceId }, { location: 'replace' });
@@ -132,6 +132,11 @@
                 
                 if(!isNewMusicpiece) {
                     $scope.mode = "view";
+                    $scope.MusicPieceForm.titleInput.$setPristine();
+                    $scope.MusicPieceForm.genreSelect.$setPristine();
+                    $scope.MusicPieceForm.composerInput.$setPristine();
+                    $scope.MusicPieceForm.difficultySelect.$setPristine();
+                    $scope.MusicPieceForm.archiveNoInput.$setPristine();
                 }
                 
                 if (isNewMusicpiece) {
