@@ -30,7 +30,6 @@ public class ArchivistApplication extends SpringBootServletInitializer {
 	@Bean
 	CommandLineRunner init(StorageService storageService) {
 		return (args) -> {
-            storageService.deleteAll();
             storageService.init();
 		};
 	}
