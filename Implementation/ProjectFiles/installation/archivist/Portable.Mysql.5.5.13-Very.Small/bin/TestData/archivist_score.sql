@@ -27,6 +27,7 @@ CREATE TABLE `score` (
   `MusicPieceId` int(11) NOT NULL,
   `InstrumentId` int(11) NOT NULL,
   `FileName` varchar(45) NOT NULL,
+  `InstrumentNo` int(11) NOT NULL,
   PRIMARY KEY (`ScoreId`),
   KEY `fk_MusicPiece_has_Instrument_Instrument1_idx` (`InstrumentId`),
   KEY `fk_MusicPiece_has_Instrument_MusicPiece1_idx` (`MusicPieceId`),

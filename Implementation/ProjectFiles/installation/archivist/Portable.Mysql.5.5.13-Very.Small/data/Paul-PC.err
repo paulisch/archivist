@@ -597,3 +597,115 @@ InnoDB: of MySQL. Please close it to get rid of this error.
 170627 21:10:30  InnoDB: Shutdown completed; log sequence number 1648118
 170627 21:10:30 [Note] Portable.Mysql.5.5.13-Very.Small\bin\mysqld.exe: Shutdown complete
 
+170628  9:27:47 [Note] Plugin 'FEDERATED' is disabled.
+170628  9:27:47 InnoDB: The InnoDB memory heap is disabled
+170628  9:27:47 InnoDB: Mutexes and rw_locks use Windows interlocked functions
+170628  9:27:47 InnoDB: Compressed tables use zlib 1.2.3
+170628  9:27:47 InnoDB: Initializing buffer pool, size = 128.0M
+170628  9:27:47 InnoDB: Completed initialization of buffer pool
+170628  9:27:47 InnoDB: highest supported file format is Barracuda.
+170628  9:27:47  InnoDB: Waiting for the background threads to start
+170628  9:27:48 InnoDB: 1.1.7 started; log sequence number 1648118
+170628  9:37:05 [Note] Plugin 'FEDERATED' is disabled.
+170628  9:37:05 InnoDB: The InnoDB memory heap is disabled
+170628  9:37:05 InnoDB: Mutexes and rw_locks use Windows interlocked functions
+170628  9:37:05 InnoDB: Compressed tables use zlib 1.2.3
+170628  9:37:05 InnoDB: Initializing buffer pool, size = 128.0M
+170628  9:37:05 InnoDB: Completed initialization of buffer pool
+170628  9:37:05 InnoDB: highest supported file format is Barracuda.
+170628  9:37:05  InnoDB: Waiting for the background threads to start
+170628  9:37:06 InnoDB: 1.1.7 started; log sequence number 1648118
+170628  9:37:06 [ERROR] Native table 'performance_schema'.'events_waits_current' has the wrong structure
+170628  9:37:06 [ERROR] Native table 'performance_schema'.'events_waits_history' has the wrong structure
+170628  9:37:06 [ERROR] Native table 'performance_schema'.'events_waits_history_long' has the wrong structure
+170628  9:37:06 [ERROR] Native table 'performance_schema'.'setup_consumers' has the wrong structure
+170628  9:37:06 [ERROR] Native table 'performance_schema'.'setup_instruments' has the wrong structure
+170628  9:37:06 [ERROR] Native table 'performance_schema'.'setup_timers' has the wrong structure
+170628  9:37:06 [ERROR] Native table 'performance_schema'.'performance_timers' has the wrong structure
+170628  9:37:06 [ERROR] Native table 'performance_schema'.'threads' has the wrong structure
+170628  9:37:06 [ERROR] Native table 'performance_schema'.'events_waits_summary_by_thread_by_event_name' has the wrong structure
+170628  9:37:06 [ERROR] Native table 'performance_schema'.'events_waits_summary_by_instance' has the wrong structure
+170628  9:37:06 [ERROR] Native table 'performance_schema'.'events_waits_summary_global_by_event_name' has the wrong structure
+170628  9:37:06 [ERROR] Native table 'performance_schema'.'file_summary_by_event_name' has the wrong structure
+170628  9:37:06 [ERROR] Native table 'performance_schema'.'file_summary_by_instance' has the wrong structure
+170628  9:37:06 [ERROR] Native table 'performance_schema'.'mutex_instances' has the wrong structure
+170628  9:37:06 [ERROR] Native table 'performance_schema'.'rwlock_instances' has the wrong structure
+170628  9:37:06 [ERROR] Native table 'performance_schema'.'cond_instances' has the wrong structure
+170628  9:37:06 [ERROR] Native table 'performance_schema'.'file_instances' has the wrong structure
+170628  9:37:06 [Note] Event Scheduler: Loaded 0 events
+170628  9:37:06 [Note] mysqld.exe: ready for connections.
+Version: '5.5.13'  socket: ''  port: 3306  MySQL Community Server (GPL)
+170628  9:39:57 [Note] Plugin 'FEDERATED' is disabled.
+170628  9:39:57 InnoDB: The InnoDB memory heap is disabled
+170628  9:39:57 InnoDB: Mutexes and rw_locks use Windows interlocked functions
+170628  9:39:57 InnoDB: Compressed tables use zlib 1.2.3
+170628  9:39:57 InnoDB: Initializing buffer pool, size = 128.0M
+170628  9:39:57 InnoDB: Completed initialization of buffer pool
+170628  9:39:57  InnoDB: Operating system error number 32 in a file operation.
+InnoDB: The error means that another program is using InnoDB's files.
+InnoDB: This might be a backup or antivirus software or another instance
+InnoDB: of MySQL. Please close it to get rid of this error.
+170628  9:40:07  InnoDB: Operating system error number 32 in a file operation.
+InnoDB: The error means that another program is using InnoDB's files.
+InnoDB: This might be a backup or antivirus software or another instance
+InnoDB: of MySQL. Please close it to get rid of this error.
+170628  9:40:17  InnoDB: Operating system error number 32 in a file operation.
+InnoDB: The error means that another program is using InnoDB's files.
+InnoDB: This might be a backup or antivirus software or another instance
+InnoDB: of MySQL. Please close it to get rid of this error.
+170628  9:40:27  InnoDB: Operating system error number 32 in a file operation.
+InnoDB: The error means that another program is using InnoDB's files.
+InnoDB: This might be a backup or antivirus software or another instance
+InnoDB: of MySQL. Please close it to get rid of this error.
+170628  9:40:37  InnoDB: Operating system error number 32 in a file operation.
+InnoDB: The error means that another program is using InnoDB's files.
+InnoDB: This might be a backup or antivirus software or another instance
+InnoDB: of MySQL. Please close it to get rid of this error.
+170628  9:40:47  InnoDB: Operating system error number 32 in a file operation.
+InnoDB: The error means that another program is using InnoDB's files.
+InnoDB: This might be a backup or antivirus software or another instance
+InnoDB: of MySQL. Please close it to get rid of this error.
+170628  9:40:57  InnoDB: Operating system error number 32 in a file operation.
+InnoDB: The error means that another program is using InnoDB's files.
+InnoDB: This might be a backup or antivirus software or another instance
+InnoDB: of MySQL. Please close it to get rid of this error.
+170628  9:41:07  InnoDB: Operating system error number 32 in a file operation.
+InnoDB: The error means that another program is using InnoDB's files.
+InnoDB: This might be a backup or antivirus software or another instance
+InnoDB: of MySQL. Please close it to get rid of this error.
+170628  9:41:17  InnoDB: Operating system error number 32 in a file operation.
+InnoDB: The error means that another program is using InnoDB's files.
+InnoDB: This might be a backup or antivirus software or another instance
+InnoDB: of MySQL. Please close it to get rid of this error.
+170628  9:41:27  InnoDB: Operating system error number 32 in a file operation.
+InnoDB: The error means that another program is using InnoDB's files.
+InnoDB: This might be a backup or antivirus software or another instance
+InnoDB: of MySQL. Please close it to get rid of this error.
+170628  9:41:37  InnoDB: Operating system error number 32 in a file operation.
+InnoDB: The error means that another program is using InnoDB's files.
+InnoDB: This might be a backup or antivirus software or another instance
+InnoDB: of MySQL. Please close it to get rid of this error.
+170628  9:42:38 [Note] Plugin 'FEDERATED' is disabled.
+170628  9:42:38 InnoDB: The InnoDB memory heap is disabled
+170628  9:42:38 InnoDB: Mutexes and rw_locks use Windows interlocked functions
+170628  9:42:38 InnoDB: Compressed tables use zlib 1.2.3
+170628  9:42:38 InnoDB: Initializing buffer pool, size = 128.0M
+170628  9:42:38 InnoDB: Completed initialization of buffer pool
+170628  9:42:38 InnoDB: Error: tablespace size must be at least 10 MB
+170628  9:42:38 [ERROR] Plugin 'InnoDB' init function returned error.
+170628  9:42:38 [ERROR] Plugin 'InnoDB' registration as a STORAGE ENGINE failed.
+170628  9:42:38 [ERROR] Can't start server: Bind on TCP/IP port: No such file or directory
+170628  9:42:38 [ERROR] Do you already have another mysqld server running on port: 3306 ?
+170628  9:42:38 [ERROR] Aborting
+
+170628  9:42:38 [Note] D:\tools\archivist\Implementation\ProjectFiles\installation\archivist\Portable.Mysql.5.5.13-Very.Small\bin\mysqld.exe: Shutdown complete
+
+170628  9:43:09 [Note] Plugin 'FEDERATED' is disabled.
+170628  9:43:09 InnoDB: The InnoDB memory heap is disabled
+170628  9:43:09 InnoDB: Mutexes and rw_locks use Windows interlocked functions
+170628  9:43:09 InnoDB: Compressed tables use zlib 1.2.3
+170628  9:43:09 InnoDB: Initializing buffer pool, size = 128.0M
+170628  9:43:09 InnoDB: Completed initialization of buffer pool
+170628  9:43:09 InnoDB: Error: tablespace size must be at least 10 MB
+170628  9:43:09 [ERROR] Plugin 'InnoDB' init function returned error.
+170628  9:43:09 [ERROR] Plugin 'InnoDB' registration as a STORAGE ENGINE failed.
