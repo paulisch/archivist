@@ -62,7 +62,7 @@ public class Main {
         	int sleepTime = 2500; //Default wait time if wildfly already running
         	
         	if (executedStart) {
-        		sleepTime = 10000; //Give wildfly some time to deploy application on fresh start up
+        		sleepTime = 20000; //Give wildfly some time to deploy application on fresh start up
         	}
         	
         	try {
