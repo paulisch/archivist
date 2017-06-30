@@ -1,8 +1,14 @@
+/*
+ * Archivist 2017
+ * StorageException.java
+ */
 package at.fhhgb.mc.archivist.storage;
 
 public class StorageException extends RuntimeException {
 
-    public StorageException(String message) {
+	private static final long serialVersionUID = 2990448662207516307L;
+
+	public StorageException(String message) {
         super(message);
     }
 

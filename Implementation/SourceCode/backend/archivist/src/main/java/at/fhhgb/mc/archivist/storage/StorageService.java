@@ -1,3 +1,7 @@
+/*
+ * Archivist 2017
+ * StorageService.java
+ */
 package at.fhhgb.mc.archivist.storage;
 
 import org.springframework.core.io.Resource;

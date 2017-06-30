@@ -1,3 +1,7 @@
+/*
+ * Archivist 2017
+ * StorageProperties.java
+ */
 package at.fhhgb.mc.archivist.storage;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -17,5 +21,4 @@ public class StorageProperties {
     public void setLocation(String location) {
         this.location = location;
     }
-
 }

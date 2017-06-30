@@ -9,13 +9,18 @@
 	<packaging>war</packaging>
 
 	<name>archivist</name>
-	<description>Archive program</description>
+	<description>
+		The goal of Archivist is to provide an easy-to-use digital repository for musical societies and brass bands.
+		Therefore, an archivist can manage a repository of musical pieces and store the corresponding musical scores.
+		This approach also allows you to have a simple overview of musical pieces, search for them and as a result
+		print them out easily on paper.
+	</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.5.3.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath/>
 	</parent>
 
 	<properties>
@@ -24,7 +29,10 @@
 		<java.version>1.8</java.version>
 	</properties>
 
+	<!-- Project dependencies (using wildfly-10.1.0.Final) -->
 	<dependencies>
+	
+		<!-- Spring framework -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -41,7 +49,15 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
+		
 
+		<!-- Java Servlet API (provided by wildfly) -->
 		<dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
@@ -55,6 +71,7 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
+        
 		
 		<!-- JPA -->
 		<dependency>
@@ -68,22 +85,19 @@
 		    </exclusions>
         </dependency>
         
+        
+        <!-- DOM4J (provided by wildfly) -->
         <dependency>
 		   <groupId>dom4j</groupId>
 		   <artifactId>dom4j</artifactId>
-		   <version>1.6.1</version>
 		   <scope>provided</scope>
 		</dependency>
 		
-		<!--<dependency>
-			<groupId>javax.persistence</groupId>
-			<artifactId>persistence-api</artifactId>
-			<version>1.0.2</version>
-		</dependency>-->
-		
 	</dependencies>
-
+	
+	<!-- Build properties -->
 	<build>
+		<!-- Final display name -->
 		<finalName>archivist</finalName>
 		<plugins>
 			<plugin>
@@ -92,6 +106,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
-
 </project>
