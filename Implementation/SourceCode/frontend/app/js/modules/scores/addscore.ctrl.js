@@ -1,6 +1,11 @@
 (function (angular) {
     'use strict';
     var ngmod = angular.module('archivist.scores');
+    
+    /**
+     * AddScoreCtrl
+     * AddScore controller for displaying the add-score-page of the app.
+     */
     ngmod.controller('AddScoreCtrl', [
         '$scope', 'MusicPieceService', 'ScoresService', 'MainService', 'AppConstants', '$stateParams', '$window', '$filter', '$q',
         function ($scope, MusicPieceService, ScoresService, MainService, AppConstants, $stateParams, $window, $filter, $q) {
@@ -29,6 +34,7 @@
                 $scope.dataLoaded = true;
             }
             
+            //Watch changes of instrument
             $scope.$watch('instrument', function() {
                 onInstrumentChanged();
             });
@@ -74,6 +80,7 @@
                     return;
                 }
                 
+                //Prepare the new score
                 var score = {
                     instrument : {
                         instrumentId : $scope.instrument.instrumentId
@@ -84,6 +91,7 @@
                     }
                 };
                 
+                //Upload the new score + the selected PDF file
                 ScoresService.uploadScore(score, $scope.file).then(function successCallback(response) {
                     onCancelAction();
                 }, function errorCallback(response) {
@@ -125,11 +133,16 @@
                 return result;
             }
             
+            //Reacts on changes of the user-selected instrument.
+            //Dynamically calculate the remaining instrument numbers that have not been
+            //used yet for the selected instrument.
             function onInstrumentChanged() {
                 $scope.instrumentNos = fetchInstrumentNos();
                 $scope.instrumentNo = $scope.instrumentNos[0];
             }
             
+            //Fetches the instrument numbers from the app constants, removes already used instrument numbers for the
+            //selected instrument and return the remaining instrument numbers.
             function fetchInstrumentNos() {
                 var nos = [];
                 var i=0;
@@ -138,10 +151,13 @@
                 }
                 
                 if ($scope.musicpiece !== null && $scope.instruments !== null && $scope.instrument !== null && $scope.musicpiece.scores && $scope.musicpiece.scores.length > 0) {
+                    //Find all scores of the same instrument
                     var sameInstrumentScores = MainService.findByProperty($scope.musicpiece.scores, "instrument.instrumentId", $scope.instrument.instrumentId);
                     
                     if (sameInstrumentScores.length > 0) {
                         var nosToRemove = [];
+                        
+                        //Note all the existing instrument numbers for the selected instrument
                         for (i=0; i<nos.length; i++) {
                             var no = nos[i];
                             var existing = MainService.findByProperty(sameInstrumentScores, "instrumentNo", no);
@@ -150,6 +166,7 @@
                             }
                         }
                         
+                        //Remove the instrument numbers from the list of instrument numbers
                         for (i=0; i<nosToRemove.length; i++) {
                             var noToRemove = nosToRemove[i];
                             for (var j=0; j<nos.length; j++) {
@@ -161,14 +178,18 @@
                         }
                     }
                 }
+                
+                //Return the remaining instrument numbers
                 return nos;
             }
             
+            //Clear the file input (unused)
             function clearFile() {
                 $('#inputFile').val(null);
                 $scope.file = null;
             }
             
+            //Upload a file (unused)
             function uploadFile() {
                 if ($scope.file !== null) {
                     $scope.readingFile = true;

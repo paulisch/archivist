@@ -1,4 +1,9 @@
 (function (angular) {
-  'use strict';
-  angular.module('archivist.home', []);
+    'use strict';
+    
+     /**
+     * archivist.home
+     * Angular module for home.
+     */
+    angular.module('archivist.home', []);
 })(angular);

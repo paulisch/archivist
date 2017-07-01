@@ -1,9 +1,14 @@
 (function (angular) {
     'use strict';
     var ngmod = angular.module('archivist.musicpiece');
+    
+    /**
+     * MusicPieceCtrl
+     * MusicPiece controller for displaying the musicpiece-page of the app.
+     */
     ngmod.controller('MusicPieceCtrl', [
-        '$scope', 'MusicPieceService', 'ScoresService', 'MainService', 'AppConstants', '$stateParams', '$filter', '$state', '$timeout',
-        function ($scope, MusicPieceService, ScoresService, MainService, AppConstants, $stateParams, $filter, $state, $timeout) {
+        '$scope', 'MusicPieceService', 'ScoresService', 'MainService', 'AppConstants', '$stateParams', '$filter', '$state', '$timeout', '$window', '$http',
+        function ($scope, MusicPieceService, ScoresService, MainService, AppConstants, $stateParams, $filter, $state, $timeout, $window, $http) {
             
             //Init
             $scope.musicPieceId = $stateParams.musicPieceId;
@@ -15,8 +20,25 @@
             $scope.getScoreName = MainService.getScoreName;
             $scope.getScoreHref = ScoresService.getScoreHref;
             
+            $scope.openScoreInNewTab = function(score) {
+                var href = $scope.getScoreHref(score);                
+                $http({
+                      method: 'GET',
+                      url: href,
+                      responseType:'arraybuffer'
+                    })
+                .then(function (data) {
+                    var file = new Blob([data.data], {type: 'application/pdf'});
+                    var fileURL = URL.createObjectURL(file);
+                    $window.open(fileURL);
+                });
+                
+                return false;
+            };
+            
             loadGenres();
             
+            //Set mode depending on if musicpiece-id is provided or not
             if ($scope.musicPieceId) {
                 $scope.mode = "view";
                 loadMusicPiece($scope.musicPieceId);
@@ -145,8 +167,7 @@
                 if (isNewMusicpiece) {
                     goHome();
                 }
-            }
-            
+            }            
             
             //Controller methods
             function loadMusicPiece(id) {
@@ -177,8 +198,6 @@
             
             function goHome() {
                 $state.go('home', null, { location: 'replace' });
-            }
-            
-            
+            }            
     }]);
 })(angular);

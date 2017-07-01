@@ -65,10 +65,9 @@
                     <!-- Scores -->
                     <div ng-show="mode == 'view'" class="row">
                         <div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <!--<label>Noten <a href="" class="manageScores">anpassen <i class="fa fa-pencil" aria-hidden="true"></i></a></label>-->
                             <label><a ui-sref="scores({musicPieceId:musicpiece.musicPieceId})">Noten <span class="manageScores">Bearbeiten <i class="fa fa-cog" aria-hidden="true"></i></span></a></label>
                             <div>
-                                <a ng-repeat="score in musicpiece.scores track by score.scoreId" ng-href="{{getScoreHref(score)}}">
+                                <a ng-repeat="score in musicpiece.scores track by score.scoreId" ng-href="{{getScoreHref(score)}}" target="_blank"> <!--ng-click="openScoreInNewTab(score)"-->
                                     <div class="scoreItem">
                                         <div>
                                             <span>

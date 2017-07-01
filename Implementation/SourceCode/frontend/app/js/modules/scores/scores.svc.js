@@ -1,25 +1,29 @@
 (function (angular) {
   var ngmod = angular.module('archivist.musicpiece');
+    
+    /**
+     * ScoresService
+     * Service for scores-page of the app.
+     */
+    ngmod.service('ScoresService', ['MainService', '$http', function(MainService, $http) {
+        'use strict';
 
-  ngmod.service('ScoresService', ['MainService', '$http', function(MainService, $http) {
-      'use strict';
-      
-      function deleteScores(scoreIds) {
+        function deleteScores(scoreIds) {
           var idsAsStr = "";
           for(var i = 0; i<scoreIds.length; i++) {
               idsAsStr += scoreIds[i] + ",";
           }
           idsAsStr = idsAsStr.substr(0, idsAsStr.length - 1);
           return MainService.httpRequest('DELETE', '/scores/delete/' + idsAsStr);
-      }
-      
-      function uploadScore(score, file) {
+        }
+
+        //Uploads a new score including the score object and the score PDF file
+        function uploadScore(score, file) {
           var formData = new FormData();
-          
+
           formData.append("file", file);
           formData.append("score", JSON.stringify(score));
-          //formData.append("score", score);
-          
+
           return $http(
               {
                   method: "POST",
@@ -35,25 +39,20 @@
           ).then(function (response) {
               return response;
           }, function (httpError) {
-              //if(httpError.status == 404 || httpError.status == -1) {
-              //404: not found
-              //-1:  timed out
               $state.go('error', {error : httpError});
-              //}
               throw httpError;
           });
-      }
-      
-      function getScoreHref(score) {
-          return MainService.buildUrl('/scores/files/' + score.fileName);
-      }
-      
-      //Return service object
-      return {
-          deleteScores : deleteScores,
-          uploadScore : uploadScore,
-          getScoreHref : getScoreHref
-      };
-    }
-  ]);
+        }
+
+        function getScoreHref(score) {
+            return MainService.buildUrl('/scores/files/' + score.fileName);
+        }
+
+        //Return service object
+        return {
+            deleteScores : deleteScores,
+            uploadScore : uploadScore,
+            getScoreHref : getScoreHref
+        };
+    }]);
 })(angular);

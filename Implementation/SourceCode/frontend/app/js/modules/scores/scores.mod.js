@@ -1,4 +1,9 @@
 (function (angular) {
-  'use strict';
-  angular.module('archivist.scores', []);
+    'use strict';
+    
+    /**
+     * archivist.scores
+     * Angular module for scores.
+     */
+    angular.module('archivist.scores', ['archivist.musicpiece']);
 })(angular);

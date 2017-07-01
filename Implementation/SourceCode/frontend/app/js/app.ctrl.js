@@ -1,9 +1,11 @@
 (function (angular) {
-  var ngapp = angular.module('archivist.webapp');
+    var ngapp = angular.module('archivist.webapp');
 
-  ngapp.controller('AppController', [
-    function () {
-        
-    }
-  ]);
+    /**
+     * AppCtrl
+     * Main controller for the app; currently unused.
+     */
+    ngapp.controller('AppCtrl', [
+      function () { }
+    ]);
 })(angular);

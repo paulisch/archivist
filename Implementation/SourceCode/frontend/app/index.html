@@ -1,32 +1,41 @@
 <!DOCTYPE html>
 <html ng-app="archivist.webapp">
-<head>
-  <!--<base href="/">-->
-  <base href="/archivist/">
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="keywords" content="music, notes, archive, management"/>
-  <meta name="author" content="Boris Fuchs & Paul Schmutz">
+    <head>
+        <!-- Base URL for testing purposes -->
+        <!--<base href="/">-->
 
-  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, user-scalable=no' name='viewport'/>
-  <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <!-- Base URL for release version -->
+        <base href="/archivist/">
 
-  <title>Archivist</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="keywords" content="music, notes, archive, management"/>
+        <meta name="author" content="Boris Fuchs & Paul Schmutz">
 
-  <link rel="shortcut icon" href="./img/appicon.png" type="image/x-icon"/>
-  <link rel="preconnect" href="http://localhost:8080/archivist" crossorigin>
-  
-  <link rel="stylesheet" href="css/style.min.css"/>
-</head>
+        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, user-scalable=no' name='viewport'/>
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
 
-<body ng-cloak ng-controller="AppController">
-     
-    <header class="hidden-xs"></header>
+        <title>Archivist</title>
 
-    <ui-view autoscroll="true"></ui-view>
-    
-    <script src="js/dependencies.min.js"></script>
-    <script src="js/app.min.js" type="text/javascript"></script>
-    
-</body>
+        <!-- App icon -->
+        <link rel="shortcut icon" href="./img/appicon.png" type="image/x-icon"/>
+
+        <!-- Preconnect to backend -->
+        <link rel="preconnect" href="http://localhost:8080/archivist/api" crossorigin>
+
+        <!-- CSS dependencies -->
+        <link rel="stylesheet" href="css/style.min.css"/>
+    </head>
+
+    <body ng-cloak ng-controller="AppCtrl">
+        <!-- App header -->
+        <header class="hidden-xs"></header>
+
+        <!-- Placeholder for the current view/page -->
+        <ui-view autoscroll="true"></ui-view>
+
+        <!-- JavaScript dependencies -->
+        <script src="js/dependencies.min.js"></script>
+        <script src="js/app.min.js" type="text/javascript"></script>
+    </body>
 </html>

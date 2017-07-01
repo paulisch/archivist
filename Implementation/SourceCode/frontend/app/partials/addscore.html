@@ -8,7 +8,8 @@
             <div class="mainArea">
                 <form name="ScoreForm" novalidate>
                     <div class="row">
-                        <!-- Stimme -->
+                       
+                        <!-- Instrument and instrument no -->
                         <div class="col col-lg-6 col-md-7 col-sm-8 col-xs-12 form-group" ng-class="{ 'has-error': (ScoreForm.instrumentNoSelect.$dirty && ScoreForm.instrumentNoSelect.$error.required) || (ScoreForm.instrumentSelect.$dirty && ScoreForm.instrumentSelect.$error.required) }">
                             <label class="control-label">Stimme</label>
                             <div>
@@ -20,6 +21,8 @@
                     </div>
                     
                     <div class="row">
+                        
+                        <!-- File upload box -->
                         <div class="col col-lg-6 col-md-7 col-sm-8 col-xs-12 form-group" ng-class="{ 'has-error': ScoreForm.fileInput.$dirty && (ScoreForm.fileInput.$error.required || ScoreForm.fileInput.$error.pattern) }">
                             <label class="control-label">Noten</label>
                             <div id="fileInput" name="fileInput" ngf-drop ngf-select ng-model="file" class="drop-box" ngf-drag-over-class="'dragover'" ngf-multiple="false" ngf-allow-dir="true" accept="application/pdf" ngf-pattern="'.pdf'" ng-required="true" ng-class="{ 'has-error': ScoreForm.fileInput.$dirty && (ScoreForm.fileInput.$error.required || ScoreForm.fileInput.$error.pattern) }">
@@ -32,7 +35,10 @@
                             <p class="help-block" ng-show="ScoreForm.fileInput.$dirty && ScoreForm.fileInput.$error.required && !ScoreForm.fileInput.$error.pattern">Datei auswählen!</p>
                             <p class="help-block" ng-show="ScoreForm.fileInput.$dirty && ScoreForm.fileInput.$error.pattern">Datei muss vom Typ PDF sein!</p>
                             
-                            <!--<div>
+                            
+                            <!-- First version of file input: -->
+                            <!--
+                               <div>
                                 <input id="fileInput" name="fileInput" type="file" accept="application/pdf" class="form-control-file" ng-model="file" onchange="angular.element(this).scope().setFile(this)" required>
                                 <p class="help-block" ng-show="ScoreForm.fileInput.$dirty && ScoreForm.fileInput.$error.required">Datei auswählen!</p>
                             </div>-->

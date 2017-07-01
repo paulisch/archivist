@@ -1,4 +1,9 @@
 (function (angular) {
-  'use strict';
-  angular.module('archivist.error', []);
+    'use strict';
+    
+    /**
+     * archivist.error
+     * Angular module for errors.
+     */
+    angular.module('archivist.error', []);
 })(angular);

@@ -1,15 +1,19 @@
 (function (angular) {
-  'use strict';
-  var ngmod = angular.module('archivist.webapp');
+    'use strict';
+    var ngmod = angular.module('archivist.webapp');
 
-  ngmod.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function ($stateProvider, $urlRouterProvider, $locationProvider) {
+    /**
+     * routes-config
+     * Configuration of all routes that can be navigated to through the archivist frontend.
+     */
+    ngmod.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function ($stateProvider, $urlRouterProvider, $locationProvider) {
         //Redirect unknown states/urls to '/home'
         $urlRouterProvider.otherwise('/home');
 
         //Set HTML5 mode (if true --> pretty urls enabled)
         $locationProvider.html5Mode({
           enabled: false,
-          requireBase: true //no <base> in index.html required (https://docs.angularjs.org/error/$location/nobase)
+          requireBase: true //<base> tag in index.html required (https://docs.angularjs.org/error/$location/nobase)
         });
 
         //Configure states

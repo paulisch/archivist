@@ -1,7 +1,9 @@
+/**
+ * Styles for the actionbar.
+ */
 @import 'base';
 
 .actionbar {
-    /*Border:*/
     border-color: $grey;
     border-style: solid;
     border-width: 1px 0px 1px 0px;
@@ -28,7 +30,6 @@
             }
         }
     }
-    
     
     .row {
         height: 64px;

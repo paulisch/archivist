@@ -3,6 +3,8 @@
         <div>
             <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
         </div>
+        
+        <!-- Error details -->
         <p>
             Es ist ein Fehler aufgetreten.<br>
             <span ng-if="error">Status: {{error.status}}<br>{{error.config.method}} {{error.config.url}}<br>{{error.statusText}}</span>

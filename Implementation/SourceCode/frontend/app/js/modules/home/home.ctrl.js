@@ -1,6 +1,11 @@
 (function (angular) {
     'use strict';
     var ngmod = angular.module('archivist.home');
+    
+    /**
+     * HomeCtrl
+     * Home controller for displaying the home-page of the app.
+     */
     ngmod.controller('HomeCtrl', [
         '$scope', 'HomeService', 'MainService', 'AppConstants', '$state',
         function ($scope, HomeService, MainService, AppConstants, $state) {
@@ -15,6 +20,8 @@
             $scope.getDifficultyLabel = MainService.getDifficultyLabel;
             $scope.getOrderBy = getOrderBy;
             $scope.onCheck = onCheck;
+            
+            //Filter function for musicpieces; filter by: musispiece name, composer, archive number, genre
             $scope.filterFunction = function(musicPiece)
             {
                 if (!$scope.searchText || $scope.searchText === "" ||
@@ -30,7 +37,7 @@
             
             loadMusicPieces();
             
-            //Sorting methods
+            //Sorting control; one of them can be enabled at the same time and specifies ascending or descending order
             $scope.sort = {
                 archiveNo : {
                     ascending : false,
@@ -60,6 +67,7 @@
             };
             
             $scope.onSort = onSort;
+            
             
             //Action bar
             $scope.header = {
@@ -97,6 +105,8 @@
                 var deleteConfirmed = confirm("Wollen Sie die ausgewählten Musikstücke wirklich löschen?");
                 if (deleteConfirmed) {
                     var toDelete = [];
+                    
+                    //Push all selected items to the array
                     for(var i=0; i<$scope.musicpieces.length; i++) {
                         if($scope.musicpieces[i].isSelected) {
                             toDelete.push($scope.musicpieces[i].musicPieceId);
@@ -107,6 +117,7 @@
             }
             
             function deleteMusicPieces(musicPieceIds) {
+                //Remove items from displayed list
                 for(var i=0; i<musicPieceIds.length; i++) {
                     for(var j=0; j<$scope.musicpieces.length; j++) {
                         if($scope.musicpieces[j].musicPieceId == musicPieceIds[i]) {
@@ -116,8 +127,9 @@
                     }
                 }
                 
+                //Delete items on backend
                 HomeService.deleteMusicPieces(musicPieceIds).then(function successCallback(response) {
-                    //loadMusicPieces();
+                    
                 }, function errorCallback(response) {
                     console.log(response);
                 });
@@ -143,8 +155,10 @@
             function onSort(column) {
                 var sort = $scope.sort[column];
                 if (sort.enabled) {
+                    //Toggle enabled sorting column (ascending/descending)
                     sort.ascending = !sort.ascending;
                 } else {
+                    //Enable another sorting column and disable all others
                     for (var property in $scope.sort) {
                         if ($scope.sort.hasOwnProperty(property)) {
                             $scope.sort[property].enabled = false;
@@ -157,6 +171,7 @@
                 }
             }
             
+            //Returns the orderby-clause of the enabled sorting column
             function getOrderBy() {
                 var result = "";
                 for (var property in $scope.sort) {
@@ -169,6 +184,7 @@
                 return result;
             }
             
+            //Select/unselect a musicpiece
             function onCheck(musicpiece) {
                 musicpiece.isSelected = !musicpiece.isSelected;
             }
@@ -182,6 +198,7 @@
                             $scope.musicpieces[i].isSelected = false;
                         }
 
+                        //Default ordering is musicpiece name
                         onSort('title');
                     }                        
                     
