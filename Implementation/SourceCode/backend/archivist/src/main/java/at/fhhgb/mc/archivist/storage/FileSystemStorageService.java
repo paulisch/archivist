@@ -1,3 +1,7 @@
+/*
+ * Archivist 2017
+ * FileSystemStorageService.java
+ */
 package at.fhhgb.mc.archivist.storage;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,21 +18,36 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
+/**
+ * The class FileSystemStorageService implements the interface StorageService and provides methods to access the file storage of the server.
+ */
 @Service
 public class FileSystemStorageService implements StorageService {
 
+    /** The root location. */
     private final Path rootLocation;
 
+    /**
+     * Instantiates a new file system storage service.
+     *
+     * @param properties the storage properties specifying the root location
+     */
     @Autowired
     public FileSystemStorageService(StorageProperties properties) {
         this.rootLocation = Paths.get(properties.getLocation());
     }
 
+    /* (non-Javadoc)
+     * @see at.fhhgb.mc.archivist.storage.StorageService#store(org.springframework.web.multipart.MultipartFile)
+     */
     @Override
     public void store(MultipartFile file) {
     	store(file, file.getOriginalFilename());
     }
     
+    /* (non-Javadoc)
+     * @see at.fhhgb.mc.archivist.storage.StorageService#store(org.springframework.web.multipart.MultipartFile, java.lang.String)
+     */
     @Override
 	public void store(MultipartFile file, String destinationFilename) {
     	try {
@@ -41,6 +60,9 @@ public class FileSystemStorageService implements StorageService {
         }
 	}
 
+    /* (non-Javadoc)
+     * @see at.fhhgb.mc.archivist.storage.StorageService#loadAll()
+     */
     @Override
     public Stream<Path> loadAll() {
         try {
@@ -53,11 +75,17 @@ public class FileSystemStorageService implements StorageService {
 
     }
 
+    /* (non-Javadoc)
+     * @see at.fhhgb.mc.archivist.storage.StorageService#load(java.lang.String)
+     */
     @Override
     public Path load(String filename) {
         return rootLocation.resolve(filename);
     }
 
+    /* (non-Javadoc)
+     * @see at.fhhgb.mc.archivist.storage.StorageService#loadAsResource(java.lang.String)
+     */
     @Override
     public Resource loadAsResource(String filename) {
         try {
@@ -75,11 +103,17 @@ public class FileSystemStorageService implements StorageService {
         }
     }
 
+    /* (non-Javadoc)
+     * @see at.fhhgb.mc.archivist.storage.StorageService#deleteAll()
+     */
     @Override
     public void deleteAll() {
         FileSystemUtils.deleteRecursively(rootLocation.toFile());
     }
 
+    /* (non-Javadoc)
+     * @see at.fhhgb.mc.archivist.storage.StorageService#init()
+     */
     @Override
     public void init() {
         try {
@@ -90,6 +124,9 @@ public class FileSystemStorageService implements StorageService {
         }
     }
 
+	/* (non-Javadoc)
+	 * @see at.fhhgb.mc.archivist.storage.StorageService#delete(java.lang.String)
+	 */
 	@Override
 	public void delete(String filename) {
 		try {
