@@ -4,17 +4,21 @@ import java.awt.Desktop;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.Scanner;
 
 public class Main {
 	
 	public static final String SHORTCUT_FILE = "shortcutCmd.bat";
 	public static final String START_FILE = "start.cmd";
+	public static final String ICO_FILE = "archivist.ico";
 	public static final String URL_ARCHIVIST = "http://localhost:8080/archivist/";
 	public static final int WILDFLY_PORT = 8080;
 	public static final int MAX_TRIES = 25;
@@ -154,12 +158,21 @@ public class Main {
 			Runtime rt = Runtime.getRuntime();
 			
 	        File jarDir = new File(ClassLoader.getSystemClassLoader().getResource(".").getPath());
-	        String jarName = new java.io.File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getName();
+	        String jarName = new File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getName();
 	        String path = jarDir.getAbsolutePath();
 	        path = path.replace('/', '\\');
 	        
+	        File icoFile = new File(ICO_FILE);
+	        InputStream in = Main.class.getResourceAsStream("/" + ICO_FILE);
+	        Files.copy(in, icoFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+	        in.close();
+	        
+	        //Mark ICO File as hidden
+	        Runtime.getRuntime().exec("attrib +H " + ICO_FILE);
+	        
 	        System.out.println("Path of jar: " + path);
 	        System.out.println("Name of jar: " + jarName);
+	        System.out.println("Name of ico: " + icoFile.getName());
 	        
 	        StringBuilder shortcutCmd = new StringBuilder();
 	        shortcutCmd.append("set SCRIPT=\"%TEMP%\\%RANDOM%-%RANDOM%-%RANDOM%-%RANDOM%.vbs\"\n");
@@ -168,7 +181,7 @@ public class Main {
 	        shortcutCmd.append("echo Set oLink = oWS.CreateShortcut(sLinkFile) >> %SCRIPT%\n");
 	        shortcutCmd.append("echo oLink.TargetPath = \""+path+"\\"+jarName+"\" >> %SCRIPT%\n");
 	        shortcutCmd.append("echo oLink.WorkingDirectory = \""+path+"\" >> %SCRIPT%\n");
-	        shortcutCmd.append("echo oLink.IconLocation = \""+path+"\\archivist.ico\" >> %SCRIPT%\n");
+	        shortcutCmd.append("echo oLink.IconLocation = \""+path+"\\"+ICO_FILE+"\" >> %SCRIPT%\n");
 	        shortcutCmd.append("echo oLink.Save >> %SCRIPT%\n");
 	        shortcutCmd.append("cscript /nologo %SCRIPT%\n");
 	        shortcutCmd.append("del %SCRIPT%\n");

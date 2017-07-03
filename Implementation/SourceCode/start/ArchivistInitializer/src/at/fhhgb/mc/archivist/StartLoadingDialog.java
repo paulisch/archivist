@@ -109,7 +109,7 @@ public class StartLoadingDialog extends JFrame {
 		panel.setDoubleBuffered(true);
 		panel.setLayout(new BorderLayout());
 		
-		JLabel description = new JLabel("© Archivist 2017", SwingConstants.CENTER);
+		JLabel description = new JLabel("Archivist 2017", SwingConstants.CENTER);
 		Border border = description.getBorder();
 		Border margin = new EmptyBorder(10,0,10,0);
 		description.setBorder(new CompoundBorder(border, margin));
